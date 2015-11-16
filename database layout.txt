@@ -1,7 +1,40 @@
 Database Layout:
 
+-----------------------------------------------------------------------
+
 Users table:
-idnum, first name, last name, email address, password hash, preferences
+idnum, first name, last name, email address, password hash
+
+idnum - int auto inc 
+fname - varchar 255
+lname - varchar 255
+email - varchar 255
+passwordhash varchar 255
+
+-----------------------------------------------------------------------
+
+Preferences table:
+idnum, preference
+
+idnum - int - foreign key to users table idnum
+preference - varchar 255
+
+NOTE: Each preference is put into the database as a single string to allow for fast comparison lookups
+
+-----------------------------------------------------------------------
 
 Drinks table:
-idnum, drink name, drink traits
+idnum, drink name
+
+idnum - int auto inc - foreign key to drinks table
+drink name - varchar 255
+
+-----------------------------------------------------------------------
+
+Drink trait:
+idnum, trait
+
+idnum - int - foreign key to drinks table
+trait - varchar 255
+
+-----------------------------------------------------------------------
