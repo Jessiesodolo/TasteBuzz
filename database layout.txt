@@ -1,0 +1,7 @@
+Database Layout:
+
+Users table:
+idnum, first name, last name, email address, password hash, preferences
+
+Drinks table:
+idnum, drink name, drink traits
