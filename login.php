@@ -8,6 +8,7 @@
 	
 	function doLogin(){
 		$dbcon = getDBConn();
+		
 	}
 	
 	function doRegister(){
