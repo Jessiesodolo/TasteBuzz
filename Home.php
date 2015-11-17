@@ -20,23 +20,7 @@
   <body >
     <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#section1">TasteBUZZ</a>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-collapsible" style="width:40%;">
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="#section2">Features</a></li>
-                <li><a href="#section3">Product</a></li>
-                <li>&nbsp;</li>
-            </ul>
-        </div>
-          <form class="navbar-form navbar-right" role="search" style="width:40%;">
+           <form class="navbar-form navbar-right" role="search">
               <div class="form-group">
                     <label class="sr-only" for="exampleInputEmail3">Email address</label>
                     <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email" value="Email">
@@ -48,16 +32,35 @@
               <button type="submit" class="btn btn-default">Sign In</button>
         </form>
 
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+             <img src="resources/images/logo_3.PNG" alt="logo" style="position:relative; float:left; margin-top:17px;">
+            <!-- <a class="navbar-brand" href="#section1">TasteBUZZ</a> -->
+        </div> 
+        <div class="navbar-collapse collapse" id="navbar-collapsible">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#section2">Purpose</a></li>
+                <li><a href="#section3">Learn More</a></li>
+                <li>&nbsp;</li>
+            </ul>
+        </div>
+       
     </div>
 </nav>
 
 <section class="container-fluid" id="section1">
     <div class="v-center">
-        <h1 class="text-center">LAUNCH ME UP</h1>
-        <h2 class="text-center lato animate slideInDown">Change It To Say <b>Something</b> Unique</h2>
+        <!-- <h1 class="text-center">TasteBUZZ</h1> -->
+        <img src="resources/images/Logo_.PNG" class="img-responsive" alt="logo1" style="position:relative; left:33.3%;">
+        <h2 class="text-center lato animate slideInDown">Don't have an account?<a href="#" id"Join" style="color:white;"><b style="text-decoration: underline;"> Join Now</b></a></h2>
         <p class="text-center">
             <br>
-            <a href="#" class="btn btn-blue btn-lg btn-huge lato" data-toggle="modal" data-target="#myModal">Get Free Membership</a>
+            <a href="#" class="btn btn-blue btn-lg btn-huge lato" data-toggle="modal" data-target="#myModal">Find a Drink For You</a>
         </p>
     </div>
     <a href="#section2">

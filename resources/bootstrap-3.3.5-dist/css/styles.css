@@ -1,8 +1,8 @@
-@import url(https://fonts.googleapis.com/css?family=Questrial);
+
 
 html,body {
 	height:100%;
-    background:center no-repeat fixed url('http://www.webdesignstash.com/api/bg');
+    background:center no-repeat fixed url('../../images/bar_2.jpg');
     background-size: cover;
     color:#444;
     font-family: 'Questrial', sans-serif;
@@ -19,7 +19,7 @@ a {
 }
 
 a:hover {
-    color:#111;
+    color:blue;
 }
 
 .btn,.well,.panel {
