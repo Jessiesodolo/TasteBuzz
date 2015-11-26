@@ -1,4 +1,5 @@
-    <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
+<?php include 'loginModal.php' ?>
+<nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
     <div class="container">
            <!--<form class="navbar-form navbar-right" role="search">
               <div class="form-group">

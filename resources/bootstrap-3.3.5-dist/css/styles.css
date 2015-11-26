@@ -186,3 +186,7 @@ footer .nav>li>a:hover {
     background-color:transparent;
 	color:#fff;
 }
+
+.nav-padding{
+  padding-top: 75px;
+}
