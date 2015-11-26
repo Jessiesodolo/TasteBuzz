@@ -94,6 +94,10 @@ a:hover {
   z-index:-1
 }
 
+.imgtext{
+  font-size: 10px;
+}
+
 .scroll-up {
   position: fixed;
   display: none;
