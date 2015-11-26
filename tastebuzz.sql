@@ -66,7 +66,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `fname` varchar(255) NOT NULL,
   `lname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `pword` varchar(255) NOT NULL
+  `pword` varchar(255) NOT NULL,
+  `admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
