@@ -22,10 +22,10 @@
     <div class="text-center col-md-6">
         <div class="center-block">
             <div class="">
-                <h2 class="text-center"><img src="//placehold.it/110" class="img-circle"><br>Register</h2>
+                <h2 class="text-center text-info"><img src="//placehold.it/110" class="img-circle"><br>Register</h2>
             </div>
             <div class="row">
-                <h6 class="text-center">COMPLETE THESE FIELDS</h6>
+                <h6 class="text-center text-info">COMPLETE THESE FIELDS</h6>
                 <form class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
                     <div class="form-group">
                         <input type="text" class="form-control input-lg" placeholder="Email">

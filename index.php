@@ -10,7 +10,6 @@
     <meta name="generator" content="Codeply">
 
 
-
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />
@@ -40,17 +39,17 @@
 </section>
 
 <section class="container-fluid" id="section2">
-    <div class="container">
+   <div class="container">
         <div class="row">
             <div class="col-sm-4">
                 <div class="row">
                     <div class="col-sm-12 text-center">
                         <div class="panel panel-default slideInLeft animate">
                             <div class="panel-heading">
-                                <h3>Robust</h3></div>
+                                <h3>Simple</h3></div>
                             <div class="panel-body">
-                                <p>There is other content and snippets of details or features that can be placed here..</p>
-                                <hr>GO
+                                <p>We'll ask about your drink preferences and then suggest drinks you might like!</p>
+                                <hr>FIND
                                 <hr>
                             </div>
                         </div>
@@ -62,10 +61,10 @@
                     <div class="col-sm-12 text-center">
                         <div class="panel panel-default slideInUp animate">
                             <div class="panel-heading">
-                                <h3>Simple</h3></div>
+                                <h3>Customized</h3></div>
                             <div class="panel-body">
-                                <p>There is other content and snippets of details or features that can be placed here..</p>
-                                <hr>GO
+                                <p>You can change your preferences to find what your drinks oh choice are</p>
+                                <hr>YOUR
                                 <hr>
                             </div>
                         </div>
@@ -77,10 +76,10 @@
                     <div class="col-sm-12 text-center">
                         <div class="panel panel-default slideInRight animate">
                             <div class="panel-heading">
-                                <h3>Clean</h3></div>
+                                <h3>Instant</h3></div>
                             <div class="panel-body">
-                                <p>There is other content and snippets of details or features that can be placed here..</p>
-                                <hr>GO
+                                <p>Preferences are searched via database and matches are displayed to you!</p>
+                                <hr>BUZZ
                                 <hr>
                             </div>
                         </div>
@@ -97,12 +96,13 @@
 </section>
 
 <section>
-    <div class="container-fluid v-center">
+    <!--The text is buggy so i'm still working on that-->
+     <div class="container-fluid v-center">
         <div class="row">
             <div class="col-sm-2 col-sm-offset-2 col-xs-6">
                 <div class="text-center">
                     <a href="">
-                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=FLAT">
+                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=ALE">
                     </a>
                     <h3 class="text-center"></h3>
                 </div>
@@ -110,7 +110,7 @@
             <div class="col-sm-2 col-xs-6">
                 <div class="text-center">
                     <a href="">
-                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=FLAT">
+                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=Vodka">
                     </a>
                     <h3 class="text-center"></h3>
                 </div>
@@ -118,7 +118,7 @@
             <div class="col-sm-2 col-xs-6">
                 <div class="text-center">
                     <a href="">
-                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=FLAT">
+                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=Rum">
                     </a>
                     <h3 class="text-center"></h3>
                 </div>
@@ -126,7 +126,7 @@
             <div class="col-sm-2 col-xs-6">
                 <div class="text-center">
                     <a href="">
-                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=FLAT">
+                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=Wine">
                     </a>
                     <h3 class="text-center"></h3>
                 </div>
@@ -136,7 +136,7 @@
             <div class="col-sm-2 col-sm-offset-2 col-xs-6">
                 <div class="text-center">
                     <a href="">
-                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=FLAT">
+                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=Cider">
                     </a>
                     <h3 class="text-center"></h3>
                 </div>
@@ -144,7 +144,7 @@
             <div class="col-sm-2 col-xs-6">
                 <div class="text-center">
                     <a href="">
-                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=FLAT">
+                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=Tequila">
                     </a>
                     <h3 class="text-center"></h3>
                 </div>
@@ -152,7 +152,7 @@
             <div class="col-sm-2 col-xs-6">
                 <div class="text-center">
                     <a href="">
-                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=FLAT">
+                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=WHISKEY">
                     </a>
                     <h3 class="text-center"></h3>
                 </div>
@@ -160,7 +160,7 @@
             <div class="col-sm-2 col-xs-6">
                 <div class="text-center">
                     <a href="">
-                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=FLAT">
+                        <img style="width:100px;" class="img-circle img-responsive center-block" src="//placehold.it/100/222/?text=Gin">
                     </a>
                     <h3 class="text-center"></h3>
                 </div>
@@ -171,19 +171,19 @@
 </section>
 
 <section class="container-fluid" id="section3">
-    <h1 class="text-center">A Bootstrap Foundation</h1>
+   <h1 class="text-center">Discover your BUZZ</h1>
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-            <h3 class="text-center lato slideInUp animate">That <strong>Doesn't</strong> Have to Look Like Bootstrap.</h3>
+            <h3 class="text-center lato slideInUp animate">Finding the <strong>TASTE</strong> that suits you.</h3>
             <br>
             <div class="row">
-                <div class="col-xs-4 col-xs-offset-1">Some brand-tacular designs even have home page content that is taller that 12,000 pixels. That's a lotta content.</div>
+                <div class="col-xs-5 col-xs-offset-1"><p>TASTEBUZZ is intended to help newcomers to the drinking world discover which drinks fit their needs.</p></div>
                 <div class="col-xs-2"></div>
-                <div class="col-xs-4 text-right">Anyhoo, this is just some random blurb of text, and Bootply.com is a playground and code editor for Bootstrap.</div>
+                <div class="col-xs-5 "><p>The data behind our suggestions is from experience, personal testimonies and product research.</p></div>
             </div>
             <br>
             <p class="text-center">
-                <img src="//placehold.it/444x222/444/FFF" class="img-responsive thumbnail center-block ">
+                <img src="resources/images/fire-bomb.jpg" class="img-responsive thumbnail center-block ">
             </p>
         </div>
     </div>
