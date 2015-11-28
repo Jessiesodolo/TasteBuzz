@@ -194,3 +194,9 @@ footer .nav>li>a:hover {
 .nav-padding{
   padding-top: 75px;
 }
+
+#register-form{
+  background-color: rgba(255,255,255,.6);
+  padding: 2%;
+  border-radius: 4px;
+}
