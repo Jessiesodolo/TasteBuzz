@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <input type="text" class="form-control input-lg" placeholder="Email">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-inline">
                         <input type="text" id="fname" class="form-control input-lg" placeholder="First Name">
                         <input type="text" id="lname" class="form-control input-lg" placeholder="Last Name">
                     </div>
@@ -51,6 +51,8 @@
         </div>
     </div>
 </div>
+
+<?php include 'footer.php' ?>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
