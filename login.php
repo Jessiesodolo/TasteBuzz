@@ -8,7 +8,7 @@
 	
 	function doLogin(){
 		$dbcon = getDBConn();
-		stmt = $dbcon->prepare("SELECT `id`,`pword`,`fname`,`admin` from `users` WHERE `email` = :email");
+		$stmt = $dbcon->prepare("SELECT `id`,`pword`,`fname`,`admin` from `users` WHERE `email` = :email");
 		$stmt->bindParam(':email', $_POST["email"]);
 		$stmt->execute();
 		if($stmt->rowCount() == 1) {
@@ -59,7 +59,7 @@
 	}
 	
 	function validatePost(){
-		switch($_POST["action"]){
+		switch($_POST["function"]){
 			case "login":
 				if(isset($_POST["email"]) && isset($_POST["password"]))
 					return true;
@@ -73,11 +73,11 @@
 	
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if(validatePost()){
-			switch($_POST["action"]){
+			switch($_POST["function"]){
 				case "login":
 					doLogin();
 					break;
-				case "register"
+				case "register":
 					doRegister();
 					break;
 			}
