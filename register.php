@@ -44,8 +44,9 @@
                         <input type="password" class="form-control input-lg" placeholder="Repeat Password">
                     </div>
                     <div class="form-group">
-                        <button value="register" class="btn btn-danger btn-lg btn-block">Register</button>
+                        <button type="submit" value="register" class="btn btn-danger btn-lg btn-block">Register</button>
                     </div>
+                    <input type="hidden" name="function" id="function" value="register">
                 </form>
             </div>
             <div class="">
