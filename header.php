@@ -1,5 +1,8 @@
 <?php include 'loginModal.php' ?>
 <?php include 'login.php' ?>
+<?php 
+    session_start();  
+?>
 <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
     <div class="container">
            <!--<form class="navbar-form navbar-right" role="search">
@@ -40,7 +43,7 @@
                                   <span class="glyphicon glyphicon-user"></span>' . $_SESSION['fname'] . '<span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                <li><a href="#">Preferences</a></li>
+                                <li><a href="preferences.php">Preferences</a></li>
                                 <li role="separator" class="divider"></li>
                                     <li><form action="login.php" method="post" id="logout">
                                         <button class="navbar-btn" type="submit">Logout</button>

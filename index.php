@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,9 +16,8 @@
   </head>
   <body >
     <?php include 'header.php' ?>
-
 <section class="container-fluid nav-padding" id="section1">
-    <div class="v-center">
+    <div>
         <!-- <h1 class="text-center">TasteBUZZ</h1> -->
         <img src="resources/images/Logo_.PNG" class="center-block img-responsive" alt="logo1">
         <?php 
