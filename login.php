@@ -37,8 +37,10 @@
 	}
 	
 	function doLogout(){
-		if($_SESSION["login"] == true){
-			session_destroy();
+		if(isset($_SESSION["login"]){
+			if($_SESSION["login"] == true){
+				session_destroy();
+			}
 		}
 		header("Location: index.php");
 	}
