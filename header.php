@@ -33,6 +33,11 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-circle-o-notch fa-lg"> Login</i></a></li>
+                <li><form action="login.php" method="post">
+                        <button type="submit">Logout</button>
+                        <input type="hidden" name="function" id="function" value="logout">
+                    </form>
+                </li>
             </ul>
         </div>
        
