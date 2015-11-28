@@ -36,6 +36,13 @@
 		}
 	}
 	
+	function doLogout(){
+		if($_SESSION["login"] == true){
+			$_SESSION["login"] = false;
+		}
+		header("Location: index.php");
+	}
+	
 	function doRegister(){
 		$dbcon = getDBConn();
 		$stmt = $dbcon->prepare("SELECT `fname` from `users` WHERE `email` = :email");
@@ -81,6 +88,9 @@
 					break;
 				case "register":
 					doRegister();
+					break;
+				case "logout":
+					doLogout();
 					break;
 			}
 		}
