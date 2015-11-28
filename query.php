@@ -95,6 +95,14 @@
 		$echo "{success : $count}";
 	}
 	
+	function getPreferences(){
+		$uArray = array();
+		foreach($dbconn->query("SELECT * FROM `userprefs` INNER JOIN `users` WHERE users.id = userprefs.id") as $userRow){
+			array_push($uArray,$userRow["pref"]);
+		}
+		echo json_encode($uArray);
+	}
+	
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		session_start();
 		if($_SESSION['login'] == true){
@@ -116,6 +124,9 @@
 					break;
 				case "getAllDrinks"
 					getAllDrinks();
+					break;
+				case "getPreferences":
+					getPreferences();
 					break;
 			}
 		}
