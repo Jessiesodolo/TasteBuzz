@@ -31,20 +31,20 @@
                     <h2 class="text-center text-info"><img src="//placehold.it/110" class="img-circle"><br>Register</h2>
                     <h6 class="text-center">COMPLETE THESE FIELDS</h6>
                     <div class="form-group">
-                        <input type="text" class="form-control input-lg" placeholder="Email">
+                        <input type="text" name="email" class="form-control input-lg" placeholder="Email">
                     </div>
                     <div class="form-group form-inline">
-                        <input type="text" id="fname" class="form-control input-lg" placeholder="First Name">
-                        <input type="text" id="lname" class="form-control input-lg" placeholder="Last Name">
+                        <input type="text" name="fname" id="fname" class="form-control input-lg" placeholder="First Name">
+                        <input type="text" name="lname" id="lname" class="form-control input-lg" placeholder="Last Name">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-lg" placeholder="Password">
+                        <input type="password" name="password" class="form-control input-lg" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-lg" placeholder="Repeat Password">
+                        <input type="password" name="password2" class="form-control input-lg" placeholder="Repeat Password">
                     </div>
                     <div class="form-group">
-                        <button type="submit" value="register" class="btn btn-danger btn-lg btn-block">Register</button>
+                        <button type="submit" value="Submit" class="btn btn-danger btn-lg btn-block">Register</button>
                     </div>
                     <input type="hidden" name="function" id="function" value="register">
                 </form>
