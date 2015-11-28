@@ -1,4 +1,13 @@
-<?php ?>
+<?php 
+	session_start();
+	echo "HELLO WORLD";
+	if(isset($_SESSION['registered'])){		
+		echo "<h1>".$_SESSION['registered']."</h1>";
+	} else {
+		echo "NOT SET";
+	}
+	
+?>
 
 <!DOCTYPE html>
 <html>

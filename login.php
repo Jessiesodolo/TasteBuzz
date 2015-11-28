@@ -1,9 +1,10 @@
 <?php
 	
-	require '/config.php';
+	
 	
 	function getDBConn(){
-		return new PDO('mysql:host=localhost;dbname='.$config['DB_NAME'],$config['DB_USERNAME'],$config['DB_PASSWORD']);
+		require '/config.php';
+		return new PDO('mysql:host=localhost;dbname='.$config["DB_NAME"],$config["DB_USERNAME"],$config["DB_PASSWORD"]);
 	}
 	
 	function doLogin(){
@@ -73,6 +74,7 @@
 	
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if(validatePost()){
+			session_start();
 			switch($_POST["function"]){
 				case "login":
 					doLogin();
