@@ -25,13 +25,16 @@
                 <h2 class="text-center text-info"><img src="//placehold.it/110" class="img-circle"><br>Register</h2>
             </div>
             <div class="row">
-                <h6 class="text-center text-info">COMPLETE THESE FIELDS</h6>
-                <form class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+
+                <h6 class="text-center">COMPLETE THESE FIELDS</h6>
+                <form action="login.php" method="post" class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+
                     <div class="form-group">
                         <input type="text" class="form-control input-lg" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control input-lg" placeholder="Username">
+                        <input type="text" id="fname" class="form-control input-lg" placeholder="First Name">
+                        <input type="text" id="lname" class="form-control input-lg" placeholder="Last Name">
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control input-lg" placeholder="Password">
@@ -40,7 +43,7 @@
                         <input type="password" class="form-control input-lg" placeholder="Repeat Password">
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-danger btn-lg btn-block">Register</button>
+                        <button value="register" class="btn btn-danger btn-lg btn-block">Register</button>
                     </div>
                 </form>
             </div>

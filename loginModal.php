@@ -1,3 +1,4 @@
+
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -7,15 +8,15 @@
             </div>
             <div class="modal-body row">
                 <h6 class="text-center">COMPLETE THESE FIELDS TO SIGN IN</h6>
-                <form class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+                <form action="login.php" method="post" class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
                     <div class="form-group">
-                        <input type="text" class="form-control input-lg" placeholder="Email">
+                        <input type="text" id="email" class="form-control input-lg" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-lg" placeholder="Password">
+                        <input type="password" id="password" class="form-control input-lg" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-danger btn-lg btn-block">Sign In</button>
+                        <button value="login" class="btn btn-danger btn-lg btn-block">Sign In</button>
                         <span class="pull-right"><a href="register.php">Register</a></span><span><a href="#">Need help?</a></span>
                     </div>
                 </form>
