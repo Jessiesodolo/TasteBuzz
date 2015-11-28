@@ -19,15 +19,15 @@
 <?php include 'header.php' ?>
 
 <div class="container-fluid nav-padding">
-    <div class="text-center col-md-6">
+    <div class="text-center">
         <div class="center-block">
             <div class="">
                 <h2 class="text-center text-info"><img src="//placehold.it/110" class="img-circle"><br>Register</h2>
             </div>
-            <div class="row">
+            <div class="row center-block">
 
                 <h6 class="text-center">COMPLETE THESE FIELDS</h6>
-                <form action="login.php" method="post" class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+                <form action="login.php" method="post" class="col-md-6 col-md-offset-3 col-xs-12 col-xs-offset-0">
 
                     <div class="form-group">
                         <input type="text" class="form-control input-lg" placeholder="Email">
