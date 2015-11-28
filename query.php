@@ -1,9 +1,9 @@
 <?php
 	
-	function getDBConn(){
+	/*function getDBConn(){
 		require '/config.php';
 		return new PDO('mysql:host=localhost;dbname='.$config['DB_NAME'],$config['DB_USERNAME'],$config['DB_PASSWORD']);
-	}
+	}*/
 	
 	function getRandomDrink(){
 		$dbconn = getDBConn();
@@ -73,7 +73,7 @@
 					}
 				}
 			}
-			array_push($simArray,array($drinkNameRow["dname"],$currentSimilarity);
+			array_push($simArray,array($drinkNameRow["dname"],$currentSimilarity));
 		}
 		usort($simArray,"sortComparator");
 		echo json_encode($simArray);
@@ -84,7 +84,7 @@
 		$dbconn = getDBConn();
 		$newPref = $_POST["newPref"];
 		$count = $dbconn->exec("INSERT INTO `userprefs` (id,pref) VALUES ($userID,$newPref)");
-		$echo "{success : $count}";
+		echo "{success : $count}";
 	}
 	
 	function removePref(){
@@ -92,7 +92,7 @@
 		$dbconn = getDBConn();
 		$delPref = $_POST["delPref"];
 		$count = $dbconn->exec("DELETE FROM `userprefs` WHERE id = $userID, pref = $delPref");
-		$echo "{success : $count}";
+		echo "{success : $count}";
 	}
 	
 	function getPreferences(){
@@ -110,19 +110,19 @@
 				case "getRandomDrink":
 					getRandomDrink();
 					break;
-				case "getBestDrink"
+				case "getBestDrink":
 					getBestDrink();
 					break;
-				case "getSortedDrinks"
+				case "getSortedDrinks":
 					getSortedDrinks();
 					break;
-				case "addPref"
+				case "addPref":
 					addPref();
 					break;
-				case "removePref"
+				case "removePref":
 					removePref();
 					break;
-				case "getAllDrinks"
+				case "getAllDrinks":
 					getAllDrinks();
 					break;
 				case "getPreferences":

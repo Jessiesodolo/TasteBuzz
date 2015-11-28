@@ -15,11 +15,22 @@
 
     <link rel="stylesheet" href="resources/bootstrap-3.3.5-dist/css/styles.css" />
   </head>
-  <body >
+  <body>
     <?php include 'header.php' ?>
-    
+    <section class="nav-padding">
+        <?php
 
+          if(isset($_SESSION["login"]) && $_SESSION["login"] == true){ 
+            include 'query.php';
+            $allPrefereces = getPreferences();
+            echo $allPreferences;
+          }
+          else{
+            //change location
+          }
 
+        ?>
+    </section>
     <?php include 'footer.php' ?>
 
 
