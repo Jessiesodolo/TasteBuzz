@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	echo "HELLO WORLD";
+	echo "HELLO WORLD".$_SESSION['login'] ;
 	if(isset($_SESSION['registered'])){		
 		echo "<h1>".$_SESSION['registered']."</h1>";
 	} else {
@@ -32,7 +32,11 @@
     <div class="v-center">
         <!-- <h1 class="text-center">TasteBUZZ</h1> -->
         <img src="resources/images/Logo_.PNG" class="center-block img-responsive" alt="logo1">
-        <h2 class="text-center lato animate slideInDown">Don't have an account? <a href="register.php" id"Join" style="color:white;"><b style="text-decoration: underline;">Join Now</b></a></h2>
+        <?php 
+            if((isset($_SESSION["login"]) && $_SESSION["login"] == false) ||  !isset($_SESSION['login'])){ 
+                echo '<h2 class="text-center lato animate slideInDown">Don\'t have an account? <a href="register.php" id"Join" style="color:white;"><b style="text-decoration: underline;">Join Now</b></a></h2>';
+            }
+        ?>
         <p class="text-center">
             <br>
             <a href="#" class="btn btn-blue btn-lg btn-huge lato" data-toggle="modal" data-target="#myModal">Find a Drink For You</a>

@@ -40,6 +40,7 @@
 		if(isset($_SESSION["login"])){
 			if($_SESSION["login"] == true){
 				$_SESSION = array();
+				$_SESSION['login'] = false;
 				session_destroy();
 			}
 		}
