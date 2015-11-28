@@ -27,6 +27,18 @@
 		$echo "{success : $count}";
 	}
 	
+	function removeDrinkTrait(){
+		$drinkTrait = $_POST["drinkTrait"];
+		$drinkID = $_POST["drinkID"];
+		$dbcon = getDBConn();
+		$stmt = $dbcon->prepare("DELETE FROM `dtraits` WHERE id = :id, trait = :trait");
+		$stmt->bindParam(':id', $drinkID);
+		$stmt->bindParam(':trait', $drinkTrait);
+		$stmt->execute();
+		$count = $stmt->rowCount();
+		$echo "{success : $count}";
+	}
+	
 	function removeDrink(){
 		$drinkID = $_POST["drinkID"];
 		$dbcon = getDBConn();
@@ -63,6 +75,14 @@
 		$echo "{success : $success}";
 	}
 	
+	function getUsers(){
+		$uArray = array();
+		foreach($dbconn->query("SELECT * FROM `users`") as $userRow){
+			array_push($uArray,$userRow["dname"]);
+		}
+		echo json_encode($uArray);
+	}
+	
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		session_start();
 		if($_SESSION['login'] == true && $_SESSION['admin'] == 1){
@@ -76,8 +96,14 @@
 				case "removeDrink"
 					removeDrink();
 					break;
+				case "removeDrinkTrait":
+					removeDrinkTrait();
+					break;
 				case "removeUser"
 					removeUser();
+					break;
+				case "getUsers":
+					getUsers();
 					break;
 			}
 		}

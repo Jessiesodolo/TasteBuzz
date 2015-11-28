@@ -37,7 +37,7 @@
 	}
 	
 	function doLogout(){
-		if(isset($_SESSION["login"]){
+		if(isset($_SESSION["login"])){
 			if($_SESSION["login"] == true){
 				$_SESSION = array();
 				session_destroy();
