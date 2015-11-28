@@ -40,6 +40,14 @@
 		echo "{\"drink_name\" : ".$bestDrink."}";
 	}
 	
+	function getAllDrinks(){
+		$dArray = array();
+		foreach($dbconn->query("SELECT * FROM `dnames`") as $drinkNameRow){
+			array_push($dArray,$drinkNameRow["dname"]);
+		}
+		echo json_encode($dArray);
+	}
+	
 	function sortComparator($a,$b){
 		$val1 = $a[1];
 		$val2 = $b[1];
@@ -47,14 +55,6 @@
 			return 0;
 		}
 		return ($val1 < $val2) ? -1 : 1;
-	}
-	
-	function getAllDrinks(){
-		$dArray = array();
-		foreach($dbconn->query("SELECT * FROM `dnames`") as $drinkNameRow){
-			array_push($dArray,$drinkNameRow["dname"]);
-		}
-		echo json_encode($dArray);
 	}
 	
 	function getSortedDrinks(){
