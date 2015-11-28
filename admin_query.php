@@ -1,8 +1,7 @@
 <?php
 	
-	require '/config.php';
-	
 	function getDBConn(){
+		require '/config.php';
 		return new PDO('mysql:host=localhost;dbname='.$config['DB_NAME'],$config['DB_USERNAME'],$config['DB_PASSWORD']);
 	}
 	
@@ -65,6 +64,7 @@
 	}
 	
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
+		session_start();
 		if($_SESSION['login'] == true && $_SESSION['admin'] == 1){
 			switch($_POST["action"]){
 				case "addDrink":
