@@ -1,7 +1,5 @@
 <?php
 	
-	
-	
 	function getDBConn(){
 		require '/config.php';
 		return new PDO('mysql:host=localhost;dbname='.$config["DB_NAME"],$config["DB_USERNAME"],$config["DB_PASSWORD"]);
