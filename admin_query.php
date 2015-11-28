@@ -70,6 +70,9 @@
 				case "addDrink":
 					addDrink();
 					break;
+				case "addDrinkTrait":
+					addDrink();
+					break;
 				case "removeDrink"
 					removeDrink();
 					break;

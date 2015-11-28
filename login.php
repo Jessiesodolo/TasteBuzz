@@ -8,7 +8,7 @@
 	
 	function doLogin(){
 		$dbcon = getDBConn();
-		stmt = $dbcon->prepare("SELECT `id`,`pword`,`fname`,`admin` from `users` WHERE `email` = :email");
+		$stmt = $dbcon->prepare("SELECT `id`,`pword`,`fname`,`admin` from `users` WHERE `email` = :email");
 		$stmt->bindParam(':email', $_POST["email"]);
 		$stmt->execute();
 		if($stmt->rowCount() == 1) {
