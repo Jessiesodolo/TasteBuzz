@@ -10,13 +10,13 @@
                 <h6 class="text-center">COMPLETE THESE FIELDS TO SIGN IN</h6>
                 <form action="login.php" method="post" class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
                     <div class="form-group">
-                        <input type="text" id="email" class="form-control input-lg" placeholder="Email">
+                        <input type="text" name="email" id="email" class="form-control input-lg" placeholder="Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" id="password" class="form-control input-lg" placeholder="Password">
+                        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" required>
                     </div>
                     <div class="form-group">
-                        <button type="submit" value="login" class="btn btn-danger btn-lg btn-block">Sign In</button>
+                        <button type="submit" value="Submit" class="btn btn-danger btn-lg btn-block">Sign In</button>
                         <span class="pull-right"><a href="register.php">Register</a></span><span><a href="#">Need help?</a></span>
                     </div>
                     <input type="hidden" name="function" id="function" value="login">
