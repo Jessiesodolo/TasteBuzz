@@ -16,9 +16,10 @@
                         <input type="password" id="password" class="form-control input-lg" placeholder="Password">
                     </div>
                     <div class="form-group">
-                        <button value="login" class="btn btn-danger btn-lg btn-block">Sign In</button>
+                        <button type="submit" value="login" class="btn btn-danger btn-lg btn-block">Sign In</button>
                         <span class="pull-right"><a href="register.php">Register</a></span><span><a href="#">Need help?</a></span>
                     </div>
+                    <input type="hidden" name="function" id="function" value="login">
                 </form>
             </div>
             <div class="modal-footer">
