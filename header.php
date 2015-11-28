@@ -1,4 +1,5 @@
 <?php include 'loginModal.php' ?>
+<?php include 'login.php' ?>
 <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
     <div class="container">
            <!--<form class="navbar-form navbar-right" role="search">
@@ -32,12 +33,26 @@
                 <li>&nbsp;</li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-circle-o-notch fa-lg"> Login</i></a></li>
-                <li><form action="login.php" method="post">
-                        <button type="submit">Logout</button>
-                        <input type="hidden" name="function" id="function" value="logout">
-                    </form>
-                </li>
+                    <?php
+                    if(isset($_SESSION["login"]) && $_SESSION["login"] == true){ 
+                        echo '<li role="presentation" class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                  <span class="glyphicon glyphicon-user"></span>' . $_SESSION['fname'] . '<span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                <li><a href="#">Preferences</a></li>
+                                <li role="separator" class="divider"></li>
+                                    <li><form action="login.php" method="post" id="logout">
+                                        <button class="navbar-btn" type="submit">Logout</button>
+                                        <input type="hidden" name="function" id="function" value="logout">
+                                    </form></li>
+                                </ul>
+                              </li>';
+                    }
+                    else {
+                        echo '<li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-circle-o-notch fa-lg"> Login</i></a></li>';
+                    }
+                    ?>
             </ul>
         </div>
        
