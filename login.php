@@ -79,6 +79,8 @@
 				if(isset($_POST["fname"]) && isset($_POST["lname"]) && isset($_POST["password"]) && isset($_POST["email"]))
 					return true;
 				return false;
+			case "logout":
+				return true;
 		}
 	}
 	
