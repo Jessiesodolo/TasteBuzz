@@ -97,6 +97,7 @@
 	
 	function getPreferences(){
 		$uArray = array();
+		$dbconn = getDBConn();
 		foreach($dbconn->query("SELECT * FROM `userprefs` INNER JOIN `users` WHERE users.id = userprefs.id") as $userRow){
 			array_push($uArray,$userRow["pref"]);
 		}
