@@ -17,19 +17,12 @@
   </head>
   <body>
     <?php include 'header.php' ?>
+    
     <section class="nav-padding">
-        <?php
+        <div class="container">
+            <input class=""></input>
+        </div>
 
-          if(isset($_SESSION["login"]) && $_SESSION["login"] == true){ 
-            include 'query.php';
-            $allPrefereces = getPreferences();
-            echo $allPreferences;
-          }
-          else{
-            //change location
-          }
-
-        ?>
     </section>
     <?php include 'footer.php' ?>
 
