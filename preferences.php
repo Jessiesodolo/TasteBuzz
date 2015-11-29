@@ -20,7 +20,18 @@
     
     <section class="nav-padding">
         <div class="container">
-            <input class=""></input>
+            <div class="input-group col-md-6">
+                <input type="text" id="preferenceInput" class="form-control" placeholder="New Preference"></input>
+                <div class="input-group-btn">
+                    <button id="addPreference" onclick="addPreference()" class="btn btn-primary">Add Preference</button>
+                </div>
+            </div>
+        </div>
+        <div id="preferences" class="container">
+            <div class="col-xs-6 col-sm-3 preference text-center">
+                <span>Something</span>
+                <button type="button" pref="Something" onclick="deletePreference(this)" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
         </div>
 
     </section>
@@ -35,7 +46,7 @@
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="resources/login.js"></script>
+    <script src="resources/preferences.js"></script>
     <script src="resources/scripts.js"></script>
   </body>
 </html>

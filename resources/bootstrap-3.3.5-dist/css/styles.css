@@ -201,3 +201,14 @@ footer .nav>li>a:hover {
   padding: 2%;
   border-radius: 4px;
 }
+
+.preference{
+  /*color: #999;*/
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px 10px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.1;
+  background-color: rgba(255,255,255,.5);
+}
