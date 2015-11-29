@@ -83,16 +83,20 @@
 		$userID = $_SESSION['uid'];
 		$dbconn = getDBConn();
 		$newPref = $_POST["newPref"];
-		$count = $dbconn->exec("INSERT INTO `userprefs` (id,pref) VALUES ($userID,$newPref)");
-		echo "{success : $count}";
+		$stmt = $dbconn->prepare("INSERT INTO `userprefs` (id,pref) VALUES (:userID,:newPref)");
+		$stmt->bindParam(':userID', $userID);
+		$stmt->bindParam(':newPref', $newPref);
+		//echo "{success : $count}";
 	}
 	
 	function removePref(){
 		$userID = $_SESSION['uid'];
 		$dbconn = getDBConn();
 		$delPref = $_POST["delPref"];
-		$count = $dbconn->exec("DELETE FROM `userprefs` WHERE id = $userID, pref = $delPref");
-		echo "{success : $count}";
+		$stmt = $dbconn->prepare("DELETE FROM `userprefs` WHERE id = :userID, pref = :delPref");
+		$stmt->bindParam(':userID', $userID);
+		$stmt->bindParam(':delPref', $delPref);
+		//echo "{success : $count}";
 	}
 	
 	function getPreferences(){
