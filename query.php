@@ -87,7 +87,8 @@
 		$stmt->bindParam(':userID', $userID);
 		$stmt->bindParam(':newPref', $newPref);
 		$stmt->execute();
-		//echo "{success : $count}";
+		$count = $stmt->rowCount();
+		echo "{success : $count}";
 	}
 	
 	function removePref(){
@@ -98,7 +99,8 @@
 		$stmt->bindParam(':userID', $userID);
 		$stmt->bindParam(':delPref', $delPref);
 		$stmt->execute();
-		//echo "{success : $count}";
+		$count = $stmt->rowCount();
+		echo "{success : $count}";
 	}
 	
 	function getPreferences(){
