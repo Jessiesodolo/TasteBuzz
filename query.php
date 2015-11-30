@@ -17,8 +17,9 @@
 		$dbconn = getDBConn();
 		$userID = $_SESSION['uid'];
 		$userPreferences = $dbconn->query("SELECT * FROM `userprefs` WHERE id = ".$userID)->fetchAll();
-		$bestSimilarity = 0;
+		$bestSimilarity = -1;
 		$bestDrink = null;
+		$bestDrinkTraits = array();
 		foreach($dbconn->query("SELECT * FROM `dnames`") as $drinkNameRow){
 			$drinkID = $drinkNameRow["id"];
 			$drinkTraits = $dbconn->query("SELECT * FROM `traits` WHERE id = ".$drinkID)->fetchAll();
@@ -34,9 +35,26 @@
 			if($currentSimilarity > $bestSimilarity){
 				$currentSimilarity = $bestSimilarity;
 				$bestDrink = $drinkNameRow["dname"];
+				$bestDrinkTraits = array();
+				foreach($drinkTraits as $drinkP){
+					array_push($bestDrinkTraits,$drinkP["trait"]);
+				}
 			}
 		}
-		echo "{\"drink_name\" : ".$bestDrink."}";
+		echo "{\"drink_name\" : ".$bestDrink."\"drink_traits\" : ".json_encode($bestDrinkTraits)."}";
+	}
+	
+	function getDrinkTraits(){
+		$drinkName = $_POST["drinkName"];
+		$stmt = $dbconn->prepare("SELECT `id` FROM `dname` WHERE `dname` = :dname");
+		$stmt->bindParam(':dname', $drinkName);
+		$stmt->execute();
+		$did = $stmt->fetch()["id"];
+		$traitArr = array();
+		foreach($dbconn->query("SELECT `trait` FROM `dtraits` WHERE `id` = ".$did) as $row){
+			array_push($traitArr,$row["trait"]);
+		}
+		echo json_encode($dArray);
 	}
 	
 	function getAllDrinks(){
@@ -137,6 +155,9 @@
 					break;
 				case "getPreferences":
 					getPreferences();
+					break;
+				case "getDrinkTraits":
+					getDrinkTraits();
 					break;
 			}
 		}
