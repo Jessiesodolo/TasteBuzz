@@ -1,6 +1,3 @@
-
-
-
 $(document).ready(function(){
 	$.ajax({
 		url: 'query.php',
@@ -8,6 +5,7 @@ $(document).ready(function(){
 		method: 'POST'
 	}).done(function(data){
 		var temp = JSON.parse(data);
+		console.log(temp);
 		for( x in temp ){
 			console.log()
 			$('#preferences').append('<div class="col-xs-6 col-sm-3 preference text-center"><span>' + temp[x] + '</span><button type="button" pref="' + temp[x] + '" onclick="deletePreference(this)" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
