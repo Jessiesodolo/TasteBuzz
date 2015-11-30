@@ -7,7 +7,11 @@ $(document).ready(function(){
 		data: {action: 'getPreferences'},
 		method: 'POST'
 	}).done(function(data){
-		console.log(data);
+		var temp = JSON.parse(data);
+		for( x in temp ){
+			console.log()
+			$('#preferences').append('<div class="col-xs-6 col-sm-3 preference text-center"><span>' + temp[x] + '</span><button type="button" pref=" ' + temp[x] + '" onclick="deletePreference(this)" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		}
 	})
 });
 
@@ -20,20 +24,21 @@ function addPreference(){
 		}).done(function(response){
 			$('#preferences').append('<div class="col-xs-6 col-sm-3 preference text-center"><span>' + $('#preferenceInput').val() + '</span><button type="button" pref=" ' + $('#preferenceInput').val() + '" onclick="deletePreference(this)" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 		}).fail(function(jqXHR, status){
-
+			console.log(status);
 		});
 	}
 };
 
 function deletePreference(object){
+	console.log($(object)[0].attributes.pref.value);
 	$.ajax({
 		url: 'query.php',
-		action: 'removePref',
-		delPref: $(object)[0].attributes.pref.value,
+		data: {action: 'removePref', delPref: $(object)[0].attributes.pref.value},
 		method: 'POST'
 	}).done(function(response){
+		console.log(response);
 		$($(object)[0].parentElement).hide();
 	}).fail(function(jqXHR, status){
-
+		console.log(status)
 	});
 };
