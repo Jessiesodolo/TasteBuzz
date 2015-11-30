@@ -28,10 +28,7 @@
             </div>
         </div>
         <div id="preferences" class="container">
-            <div class="col-xs-6 col-sm-3 preference text-center">
-                <span>Something</span>
-                <button type="button" pref="Something" onclick="deletePreference(this)" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
+            
         </div>
 
     </section>
