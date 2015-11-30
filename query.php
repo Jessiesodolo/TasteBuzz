@@ -95,7 +95,7 @@
 		$userID = $_SESSION['uid'];
 		$dbconn = getDBConn();
 		$delPref = $_POST["delPref"];
-		$stmt = $dbconn->prepare("DELETE FROM `userprefs` WHERE `id` = :userID AND `pref`= ':delPref'");
+		$stmt = $dbconn->prepare("DELETE FROM `userprefs` WHERE `id` = :userID AND `pref`= :delPref");
 		$stmt->bindParam(':userID', $userID);
 		$stmt->bindParam(':delPref', $delPref);
 		$stmt->execute();
@@ -106,7 +106,8 @@
 	function getPreferences(){
 		$uArray = array();
 		$dbconn = getDBConn();
-		foreach($dbconn->query("SELECT * FROM `userprefs` INNER JOIN `users` WHERE users.id = userprefs.id") as $userRow){
+		$userID = $_SESSION['uid'];
+		foreach($dbconn->query("SELECT * FROM `userprefs` WHERE id = ".$userID) as $userRow){
 			array_push($uArray,$userRow["pref"]);
 		}
 		echo json_encode($uArray);
