@@ -86,6 +86,7 @@
 		$stmt = $dbconn->prepare("INSERT INTO `userprefs` (id,pref) VALUES (:userID,:newPref)");
 		$stmt->bindParam(':userID', $userID);
 		$stmt->bindParam(':newPref', $newPref);
+		$stmt->execute();
 		//echo "{success : $count}";
 	}
 	
@@ -96,6 +97,7 @@
 		$stmt = $dbconn->prepare("DELETE FROM `userprefs` WHERE id = :userID, pref = :delPref");
 		$stmt->bindParam(':userID', $userID);
 		$stmt->bindParam(':delPref', $delPref);
+		$stmt->execute();
 		//echo "{success : $count}";
 	}
 	
