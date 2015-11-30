@@ -20,6 +20,8 @@
 		$bestSimilarity = -1;
 		$bestDrink = null;
 		$bestDrinkTraits = array();
+		$bestDrinkDesc = "";
+		$bestDrinkUrl = "";
 		foreach($dbconn->query("SELECT * FROM `dinfo`") as $drinkNameRow){
 			$drinkID = $drinkNameRow["id"];
 			$drinkTraits = $dbconn->query("SELECT * FROM `traits` WHERE id = ".$drinkID)->fetchAll();
@@ -35,13 +37,15 @@
 			if($currentSimilarity > $bestSimilarity){
 				$currentSimilarity = $bestSimilarity;
 				$bestDrink = $drinkNameRow["dname"];
+				$bestDrinkDesc = $drinkNameRow["description"];
+				$bestDrinkUrl = $drinkNameRow["img_addr"];
 				$bestDrinkTraits = array();
 				foreach($drinkTraits as $drinkP){
 					array_push($bestDrinkTraits,$drinkP["trait"]);
 				}
 			}
 		}
-		echo "{\"drink_name\" : ".$bestDrink."\"drink_traits\" : ".json_encode($bestDrinkTraits)."}";
+		echo "{\"drink_name\" : ".$bestDrink.", \"drink_traits\" : ".json_encode($bestDrinkTraits).", \"desc\" : ".$bestDrinkDesc.", \"url\" : ".$bestDrinkUrl."}";
 	}
 	
 	function getDrinkInfo(){
