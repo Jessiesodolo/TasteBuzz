@@ -95,7 +95,7 @@
 		$userID = $_SESSION['uid'];
 		$dbconn = getDBConn();
 		$delPref = $_POST["delPref"];
-		$stmt = $dbconn->prepare("DELETE FROM `userprefs` WHERE id = :userID AND pref = :delPref");
+		$stmt = $dbconn->prepare("DELETE FROM `userprefs` WHERE `id`=:userID AND `pref`=':delPref'");
 		$stmt->bindParam(':userID', $userID);
 		$stmt->bindParam(':delPref', $delPref);
 		$stmt->execute();
