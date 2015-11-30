@@ -167,6 +167,9 @@
 				case "getDrinkTraits":
 					getDrinkTraits();
 					break;
+				case "getDrinkInfo":
+					getDrinkInfo();
+					break;
 			}
 		}
 	}
