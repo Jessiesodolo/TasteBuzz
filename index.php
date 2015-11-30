@@ -27,7 +27,14 @@
         ?>
         <p class="text-center">
             <br>
-            <a href="#" class="btn btn-blue btn-lg btn-huge lato" data-toggle="modal" data-target="#myModal">Find a Drink For You</a>
+            <?php
+            if((isset($_SESSION["login"]) && $_SESSION["login"] == false) ||  !isset($_SESSION['login'])){ 
+                echo '<a href="#" class="btn btn-blue btn-lg btn-huge lato" data-toggle="modal" data-target="#myModal">Find a Drink For You</a>';
+            }
+            else {
+                echo '<a href="drinks.php?type=best" class="btn btn-blue btn-lg btn-huge lato">Find a Drink For You</a>';
+            }
+            ?>
         </p>
     </div>
     <a href="#section2">

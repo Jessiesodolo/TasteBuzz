@@ -32,7 +32,7 @@
                 <li><a href="#section2">Purpose</a></li>
                 <li><a href="#section3">Learn More</a></li>
                 <li><a href="#section4">Contact</a></li>
-                <li><a href="drinks.php">Drinks</a></li>
+                <li><a href="drinks.php?type=all">Drinks</a></li>
                 <li>&nbsp;</li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
