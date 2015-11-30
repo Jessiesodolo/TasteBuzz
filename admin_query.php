@@ -7,9 +7,13 @@
 	
 	function addDrink(){
 		$drinkName = $_POST["drinkName"];
+		$drinkDesc = $_POST["drinkDesc"];
+		$drinkURL = $_POST["drinkURL"];
 		$dbcon = getDBConn();
-		$stmt = $dbcon->prepare("INSERT INTO `dnames` (dname) VALUES (:dname)");
+		$stmt = $dbcon->prepare("INSERT INTO `dinfo` (dname,description,img_addr) VALUES (:dname,:description,:img_addr)");
 		$stmt->bindParam(':dname', $drinkName);
+		$stmt->bindParam(':description', $drinkDesc);
+		$stmt->bindParam(':img_addr', $drinkURL);
 		$stmt->execute();
 		$count = $stmt->rowCount();
 		$echo "{success : $count}";
@@ -42,7 +46,7 @@
 	function removeDrink(){
 		$drinkID = $_POST["drinkID"];
 		$dbcon = getDBConn();
-		$stmt = $dbcon->prepare("DELETE FROM `dnames` WHERE id = :id");
+		$stmt = $dbcon->prepare("DELETE FROM `dinfo` WHERE id = :id");
 		$stmt->bindParam(':id', $drinkID);
 		$stmt->execute();
 		$count = $stmt->rowCount();
