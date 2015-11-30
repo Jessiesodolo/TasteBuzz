@@ -13,6 +13,31 @@
 		echo "{\"drink_name\" : ".$drink["dname"]."}";
 	}
 	
+	function getRandomBestDrink(){
+		$dbconn = getDBConn();
+		$userID = $_SESSION['uid'];
+		$userPreferences = $dbconn->query("SELECT * FROM `userprefs` WHERE id = ".$userID)->fetchAll();
+		$simArray = array();
+		foreach($dbconn->query("SELECT * FROM `dinfo`") as $drinkNameRow){
+			$drinkID = $drinkNameRow["id"];
+			$drinkTraits = $dbconn->query("SELECT * FROM `traits` WHERE id = ".$drinkID)->fetchAll();
+			//Array of format [[id,trait][id,trait]]
+			$currentSimilarity = 0;
+			foreach($userPreferences as $userP){
+				foreach($drinkTraits as $drinkP){
+					if($drinkP["trait"] == $userP["pref"]){
+						$currentSimilarity++;
+					}
+				}
+			}
+			array_push($simArray,array($drinkNameRow["dname"],$currentSimilarity));
+		}
+		usort($simArray,"sortComparator");
+		$top20 = array_slice($simArray,0,20);
+		$randElement = array_rand($top20,1);
+		echo json_encode($randElement[0]);
+	}
+	
 	function getBestDrink(){
 		$dbconn = getDBConn();
 		$userID = $_SESSION['uid'];
@@ -173,6 +198,9 @@
 					break;
 				case "getDrinkInfo":
 					getDrinkInfo();
+					break;
+				case "getRandomBestDrink":
+					getRandomBestDrink();
 					break;
 			}
 		}
