@@ -8,7 +8,7 @@ $(document).ready(function(){
 		console.log(temp);
 		for( x in temp ){
 			console.log()
-			$('#preferences').append('<div class="col-xs-6 col-sm-3 preference text-center"><span>' + temp[x] + '</span><button type="button" pref="' + temp[x] + '" onclick="deletePreference(this)" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			$('#preferences').append('<div class="col-xs-6 form-group col-sm-3 preference text-center"><span>' + temp[x] + '</span><button type="button" pref="' + temp[x] + '" onclick="deletePreference(this)" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 		}
 	})
 });
@@ -20,7 +20,7 @@ function addPreference(){
 			data: {action: 'addPref', newPref: $('#preferenceInput').val()},
 			method: 'POST'
 		}).done(function(response){
-			$('#preferences').append('<div class="col-xs-6 col-sm-3 preference text-center"><span>' + $('#preferenceInput').val() + '</span><button type="button" pref="' + $('#preferenceInput').val() + '" onclick="deletePreference(this)" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			$('#preferences').append('<div class="col-xs-6 form-group col-sm-3 preference text-center"><span>' + $('#preferenceInput').val() + '</span><button type="button" pref="' + $('#preferenceInput').val() + '" onclick="deletePreference(this)" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 		}).fail(function(jqXHR, status){
 			console.log(status);
 		});
