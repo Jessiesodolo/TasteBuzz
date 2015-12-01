@@ -22,7 +22,7 @@ $(document).ready(function(){
 		$.ajax({
 			url: 'query.php',
 			method: 'POST',
-			data: {action: 'getBestDrink'}
+			data: {action: 'getSortedDrinks'}
 		}).done(function(data){
 			console.log(data);
 			//var temp = JSON.parse(data);
