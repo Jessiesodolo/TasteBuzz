@@ -53,7 +53,7 @@ $(document).ready(function(){
 					console.log(count);
 					if(count%2 == 0){ //even
 						count++;
-						console.log('even');
+						console.log(drink);
 						$('#allDrinks').append('<div class="media"><div class="media-left">' + 
 						'<img class="media-object" id="drink-image" src="' + drink.img_addr + '"></div><div'+
 						' class="media-body"><h2 class="media-title">' + drink.dname + '</h2><p>' + drink.description + '</p></div></div>')
