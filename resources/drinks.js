@@ -22,9 +22,11 @@ $(document).ready(function(){
 		$.ajax({
 			url: 'query.php',
 			method: 'POST',
-			data: {action: 'getBestDrink'}
+			data: {action: 'getSortedDrinks'}
 		}).done(function(data){
-			console.log('data: ' + data);
+			console.log(data);
+			//var temp = JSON.parse(data);
+			//console.log(temp);
 		}).fail(function(jqXHR, status){
 			console.log('error: ' + status);
 		});
@@ -33,9 +35,13 @@ $(document).ready(function(){
 		$.ajax({
 			url: 'query.php',
 			method: 'POST',
-			data: {action: 'getAllDrinks'}
+			data: {action : 'getAllDrinks'}
 		}).done(function(data){
-			console.log('data: ' + data);
+			var temp = JSON.parse(data);
+			for(x in temp){
+				$('#allDrinks').append('<div class="col-lg-4"><a href="#"><img src="' + temp[x][1] + '"></a></div>')
+			}
+			console.log(temp);
 		}).fail(function(jqXHR, status){
 			console.log('error: ' + status);
 		});
