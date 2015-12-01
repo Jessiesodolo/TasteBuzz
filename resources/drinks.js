@@ -22,7 +22,7 @@ $(document).ready(function(){
 		$.ajax({
 			url: 'query.php',
 			method: 'POST',
-			data: 'getBestDrink'
+			data: {action: 'getBestDrink'}
 		}).done(function(data){
 			console.log('data: ' + data);
 		}).fail(function(jqXHR, status){
@@ -33,7 +33,7 @@ $(document).ready(function(){
 		$.ajax({
 			url: 'query.php',
 			method: 'POST',
-			data: 'getAllDrinks'
+			data: {action: 'getAllDrinks'}
 		}).done(function(data){
 			console.log('data: ' + data);
 		}).fail(function(jqXHR, status){
