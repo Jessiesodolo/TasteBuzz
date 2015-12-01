@@ -112,7 +112,7 @@
 		if($val1 == $val2){
 			return 0;
 		}
-		return ($val1 < $val2) ? -1 : 1;
+		return ($val1 < $val2) ? 1 : -1;
 	}
 	
 	function getSortedDrinks(){
@@ -141,8 +141,8 @@
 			}
 			array_push($simArray,array($currentSimilarity,$drinkNameRow["dname"],$drinkNameRow["description"],$drinkNameRow["img_addr"]));
 		}
-		$r = usort($simArray,"sortComparator");
-		echo $r;
+		usort($simArray,"sortComparator");
+		echo json_encode($simArray);
 	}
 	
 	function addPref(){
