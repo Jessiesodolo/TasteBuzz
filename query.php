@@ -139,7 +139,7 @@
 					}
 				}
 			}
-			array_push($simArray,array($currentSimilarity,$drinkNameRow["dname"],$drinkNameRow["description"],$drinkNameRow["img_addr"]));
+			array_push($simArray,array($currentSimilarity,$drinkNameRow["dname"],$drinkNameRow["img_addr"]));
 		}
 		usort($simArray,"sortComparator");
 		echo json_encode($simArray);

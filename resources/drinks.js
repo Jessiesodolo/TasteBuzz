@@ -25,8 +25,8 @@ $(document).ready(function(){
 			data: {action: 'getSortedDrinks'}
 		}).done(function(data){
 			console.log(data);
-			//var temp = JSON.parse(data);
-			//console.log(temp);
+			var temp = JSON.parse(data);
+			console.log(temp);
 		}).fail(function(jqXHR, status){
 			console.log('error: ' + status);
 		});
