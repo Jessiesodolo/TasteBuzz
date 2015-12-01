@@ -25,18 +25,11 @@
         <div class="container" id="drink-search">
         </div>
         <div class="container" id="best-drink">
-            <div class="row-space-2">
-                <!--Drink Name-->
-            </div>
-            <div class="row row-space-6">
-                <div class="col-lg-8">
-                    <!--Image-->
-                </div>
-                <div class="col-lg-4">
-                    <!--Description-->
-                </div>
-            </div>
+            
         </div>
+        <div class="container">
+        <hr class="featurette-divider">
+    </div>
         <div class="container" id="allDrinks">
             
         </div>

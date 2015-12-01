@@ -70,7 +70,7 @@
 				}
 			}
 		}
-		echo "{\"drink_name\" : ".$bestDrink.", \"drink_traits\" : ".json_encode($bestDrinkTraits).", \"desc\" : ".$bestDrinkDesc.", \"url\" : ".$bestDrinkUrl."}";
+		echo "{\"dname\" : \"".$bestDrink."\", \"drink_traits\" : ".json_encode($bestDrinkTraits).", \"description\" : \"".$bestDrinkDesc."\", \"img_addr\" : \"".$bestDrinkUrl."\"}";
 	}
 	
 	function getDrinkInfo(){

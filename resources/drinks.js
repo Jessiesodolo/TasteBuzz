@@ -26,8 +26,23 @@ $(document).ready(function(){
 		}).done(function(data){
 			var temp = JSON.parse(data);
 			console.log(temp);
-			var count = 0;
-			for(x in temp){
+			var count = 1;
+			$.ajax({
+				method: 'POST',
+				data: {action: 'getBestDrink'},
+				url: 'query.php',
+				dataType: 'text'
+			}).done(function(data){
+				console.log(data);
+				var bestDrink = JSON.parse(data);
+				console.log(bestDrink);
+				$('#best-drink').append('<div class="media"><div class="media-left">' + 
+				'<img class="media-object" id="drink-image" src="' + bestDrink.img_addr + '"></div><div'+
+				' class="media-body"><h2 class="media-title">' + bestDrink.dname + '</h2><p>' + bestDrink.description + '</p></div></div>');
+			}).fail(function(jqXHR, status){
+				console.log('error: ' + status);
+			});
+			for(var x = 1; x < temp.length; x++){
 				var name = temp[x][1]
 				console.log(name);
 				(function(x){
@@ -36,19 +51,18 @@ $(document).ready(function(){
 					data: {action: 'getDrinkInfo', drinkName: name},
 					url: 'query.php'
 				}).done(function(data){
-					console.log(data);
 					var drink = JSON.parse(data);
 					if(count%2 == 0){ //even
 						count++;
 						$('#allDrinks').append('<div class="media"><div class="media-left">' + 
 						'<img class="media-object" id="drink-image" src="' + drink.img_addr + '"></div><div'+
-						' class="media-body"><h2 class="media-title">' + drink.dname + '</h2><p>' + drink.description + '</p></div></div>')
+						' class="media-body"><h2 class="media-title">' + drink.dname + '</h2><p>' + drink.description + '</p></div></div>');
 					}
 					else{ //odd
 						count++;
 						$('#allDrinks').append('<div class="media"><div class="media-body"><h2 class="media-title">' + 
 							drink.dname + '</h2><p>' + drink.description + '</p></div><div class="media-right">' + 
-						'<img class="media-object" id="drink-image" src="' + drink.img_addr + '"></div></div>')
+						'<img class="media-object" id="drink-image" src="' + drink.img_addr + '"></div></div>');
 					}
 
 					/*$('#drink-description').append('');
