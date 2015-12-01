@@ -19,6 +19,7 @@ $(document).ready(function(){
 	var params = parseQueryString();
 	console.log(params["type"]);
 	if(params["type"] == 'best'){
+
 		$.ajax({
 			url: 'query.php',
 			method: 'POST',
@@ -38,7 +39,7 @@ $(document).ready(function(){
 				console.log(bestDrink);
 				$('#best-drink').append('<div class="media"><div class="media-left">' + 
 				'<img class="media-object" id="drink-image" src="' + bestDrink.img_addr + '"></div><div'+
-				' class="media-body"><h2 class="media-title">' + bestDrink.dname + '</h2><p>' + bestDrink.description + '</p></div></div>');
+				' class="media-body"><h2 class="media-title"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>' + bestDrink.dname + ' |<small>Best Match!</small> </h2><p>' + bestDrink.description + '</p></div></div>');
 			}).fail(function(jqXHR, status){
 				console.log('error: ' + status);
 			});
@@ -79,6 +80,7 @@ $(document).ready(function(){
 		});
 	}
 	else if (params['type'] == 'all'){
+		$('.featurette-divider').hide();
 		$.ajax({
 			url: 'query.php',
 			method: 'POST',
@@ -95,6 +97,7 @@ $(document).ready(function(){
 					data: {action: 'getDrinkInfo', drinkName: name},
 					url: 'query.php'
 				}).done(function(data){
+					console.log(data);
 					var drink = JSON.parse(data);
 					//console.log(drink);
 					console.log(count);

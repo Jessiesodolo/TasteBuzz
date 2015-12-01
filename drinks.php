@@ -28,8 +28,8 @@
             
         </div>
         <div class="container">
-        <hr class="featurette-divider">
-    </div>
+            <hr class="featurette-divider">
+        </div>
         <div class="container" id="allDrinks">
             
         </div>

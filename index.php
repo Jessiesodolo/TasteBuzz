@@ -197,63 +197,7 @@
     </div>
 </section>
 
-<section id="section4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center">Make Contact</h1>
-                <hr>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-9">
-                <div class="row form-group">
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required="">
-                    </div>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control" id="middleName" name="firstName" placeholder="Middle Name" required="">
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required="">
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-sm-6">
-                        <input type="email" class="form-control" name="email" placeholder="Email" required="">
-                    </div>
-                    <div class="col-sm-5">
-                        <input type="email" class="form-control" name="phone" placeholder="Phone" required="">
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-sm-11">
-                        <input type="homepage" class="form-control" placeholder="Website URL" required="">
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-sm-11">
-                        <button class="btn btn-default btn-lg pull-right">Contact Us</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="well well-sm pull-right">
-                    <address>
-                          <strong>Some LLC</strong><br>
-                          795 Folsom Ave, Suite 600<br>
-                          Newport, RI 94107<br>
-                          P: (123) 456-7890
-                    </address>
-                    <address>
-                      <strong>Email Us</strong><br>
-                      <a href="mailto:#">first.last@example.com</a>
-                    </address>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 <!--
 <section class="container-fluid" id="section5">
     <div class="row">

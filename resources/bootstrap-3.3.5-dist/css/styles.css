@@ -236,3 +236,22 @@ footer .nav>li>a:hover {
 .featurette-divider {
   margin: 80px 0; /* <hr> between each */
 }
+
+#best-drink .media-title{
+  color: yellow;
+}
+
+#best-drink #drink-image{
+  max-height: 400px;
+  max-width: 300px;
+}
+
+.media{
+  padding: 10px;
+}
+
+#best-drink{
+  background-color: rgba(255,255,0, .4);
+  font-size: 120%;
+  color: black;
+}
