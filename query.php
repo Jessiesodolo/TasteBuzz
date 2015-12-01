@@ -118,7 +118,7 @@
 		$dbconn = getDBConn();
 		$userID = $_SESSION['uid'];
 		$userPrefQuery = $dbconn->query("SELECT * FROM `userprefs` WHERE `id` = ".$userID);
-		$userPreferences = $userPrefQuery->->fetchAll();
+		$userPreferences = $userPrefQuery->fetchAll();
 		$userPrefQuery->closeCursor();
 		$simArray = array();
 		$drinkInfoQuery = $dbconn->query("SELECT * FROM `dinfo`");
