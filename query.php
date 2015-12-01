@@ -52,7 +52,7 @@
 		$result->closeCursor();
 		foreach($drinks as $drinkNameRow){
 			$drinkID = $drinkNameRow["id"];
-			$drinkTraits = $dbconn->query("SELECT * FROM `traits` WHERE `id` = ".$drinkID)->fetchAll();
+			$drinkTraits = $dbconn->query("SELECT * FROM `dtraits` WHERE `id` = ".$drinkID)->fetchAll();
 			//Array of format [[id,trait][id,trait]]
 			$currentSimilarity = 0;
 			foreach($userPreferences as $userP){
