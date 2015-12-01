@@ -37,8 +37,8 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <!--All Drinks-->
+        <div class="container" id="allDrinks">
+            
         </div>
 
     </section>
