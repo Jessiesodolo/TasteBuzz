@@ -173,7 +173,7 @@
 	function doSearch(){
 		$dbconn = getDBConn();
 		$searchTerm = $_POST["searchTerm"];
-		$stmt = $dbconn->prepare("SELECT * FROM `dinfo` INNER JOIN `dtraits` ON dtraits.id = dinfo.id INNER JOIN `dtraits` ON dtraits.trait = :trait");
+		$stmt = $dbconn->prepare("SELECT * FROM `dinfo` INNER JOIN `dtraits` ON dtraits.id = dinfo.id AND dtraits.trait = :trait");
 		$stmt->bindParam(":trait",$searchTerm);
 		$stmt->execute();
 		echo json_encode($stmt->fetchAll());
