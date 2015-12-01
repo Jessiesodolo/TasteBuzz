@@ -81,7 +81,7 @@
 		$stmt = $dbconn->prepare("SELECT * FROM `dinfo` WHERE `dname` = :dname");
 		$stmt->bindParam(':dname', $drinkName);
 		$stmt->execute();
-		echo json_encode(array_slice($stmt->fetch(),3,6));
+		echo json_encode(array_slice($stmt->fetch(),0,3));
 	}
 	
 	function getDrinkTraits(){
