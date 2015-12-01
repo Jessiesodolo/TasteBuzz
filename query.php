@@ -84,10 +84,10 @@
 		$stmt->bindParam(':dname', $drinkName);
 		$stmt->execute();
 		$res = $stmt->fetch();
-		array_push($ret,$res["dname"]);
+		/*array_push($ret,$res["dname"]);
 		array_push($ret,$res["description"]);
-		array_push($ret,$res["img_addr"]);
-		echo json_encode($ret);
+		array_push($ret,$res["img_addr"]);*/
+		echo json_encode($res);
 	}
 	
 	function getDrinkTraits(){

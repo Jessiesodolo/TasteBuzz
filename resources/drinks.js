@@ -24,9 +24,42 @@ $(document).ready(function(){
 			method: 'POST',
 			data: {action: 'getSortedDrinks'}
 		}).done(function(data){
-			console.log(data);
 			var temp = JSON.parse(data);
 			console.log(temp);
+			var count = 0;
+			for(x in temp){
+				var name = temp[x][1]
+				console.log(name);
+				(function(x){
+				$.ajax({
+					method: 'POST',
+					data: {action: 'getDrinkInfo', drinkName: name},
+					url: 'query.php'
+				}).done(function(data){
+					console.log(data);
+					var drink = JSON.parse(data);
+					if(count%2 == 0){ //even
+						count++;
+						$('#allDrinks').append('<div class="media"><div class="media-left">' + 
+						'<img class="media-object" id="drink-image" src="' + drink.img_addr + '"></div><div'+
+						' class="media-body"><h2 class="media-title">' + drink.dname + '</h2><p>' + drink.description + '</p></div></div>')
+					}
+					else{ //odd
+						count++;
+						$('#allDrinks').append('<div class="media"><div class="media-body"><h2 class="media-title">' + 
+							drink.dname + '</h2><p>' + drink.description + '</p></div><div class="media-right">' + 
+						'<img class="media-object" id="drink-image" src="' + drink.img_addr + '"></div></div>')
+					}
+
+					/*$('#drink-description').append('');
+					$('#drink-image').html('');
+					$('#drink-description').append('');*/
+
+				}).fail(function(jqXHR, status){
+					console.log('error: ' + status);
+				});})(x);
+				//$('#allDrinks').append('<div class="col-sm-4" style="margin-bottom: 15px"><h3 style="color: white;">' + temp[x][0] + '</h3><a href="drink.php?name=' + temp[x][0] + '"><div class="col-xs-12 center-block all-drink-image" style="background: center no-repeat url(' + temp[x][1] + ') gray; height: 200px"></div></a></div>')
+			}
 		}).fail(function(jqXHR, status){
 			console.log('error: ' + status);
 		});
@@ -75,7 +108,6 @@ $(document).ready(function(){
 				});})(x);
 				//$('#allDrinks').append('<div class="col-sm-4" style="margin-bottom: 15px"><h3 style="color: white;">' + temp[x][0] + '</h3><a href="drink.php?name=' + temp[x][0] + '"><div class="col-xs-12 center-block all-drink-image" style="background: center no-repeat url(' + temp[x][1] + ') gray; height: 200px"></div></a></div>')
 			}
-			console.log(temp);
 		}).fail(function(jqXHR, status){
 			console.log('error: ' + status);
 		});
