@@ -100,7 +100,7 @@
 	function getAllDrinks(){
 		$dArray = array();
 		foreach($dbconn->query("SELECT * FROM `dinfo`") as $drinkNameRow){
-			array_push($dArray,$drinkNameRow["dname"]);
+			array_push($dArray,array($drinkNameRow["dname"],$drinkNameRow["img_addr"]));
 		}
 		echo json_encode($dArray);
 	}
