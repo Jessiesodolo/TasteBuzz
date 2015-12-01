@@ -47,10 +47,7 @@
 		$bestDrinkTraits = array();
 		$bestDrinkDesc = "";
 		$bestDrinkUrl = "";
-		$result = $dbconn->query("SELECT * FROM `dinfo`");
-		$drinks = $result->fetchAll();
-		$result->closeCursor();
-		foreach($drinks as $drinkNameRow){
+		foreach($dbconn->query("SELECT * FROM `dinfo`") as $drinkNameRow){
 			$drinkID = $drinkNameRow["id"];
 			$drinkTraits = $dbconn->query("SELECT * FROM `dtraits` WHERE `id` = ".$drinkID)->fetchAll();
 			//Array of format [[id,trait][id,trait]]
@@ -118,18 +115,11 @@
 	function getSortedDrinks(){
 		$dbconn = getDBConn();
 		$userID = $_SESSION['uid'];
-		$userPrefQuery = $dbconn->query("SELECT * FROM `userprefs` WHERE `id` = ".$userID);
-		$userPreferences = $userPrefQuery->fetchAll();
-		$userPrefQuery->closeCursor();
+		$userPreferences = $dbconn->query("SELECT * FROM `userprefs` WHERE `id` = ".$userID)->fetchAll();
 		$simArray = array();
-		$drinkInfoQuery = $dbconn->query("SELECT * FROM `dinfo`");
-		$drinkInfo = $drinkInfoQuery->fetchAll();
-		$drinkInfoQuery->closeCursor();
-		foreach($drinkInfo as $drinkNameRow){
+		foreach($dbconn->query("SELECT * FROM `dinfo`") as $drinkNameRow){
 			$drinkID = $drinkNameRow["id"];
-			$drinkTraitsQuery = $dbconn->query("SELECT * FROM `dtraits` WHERE id = ".$drinkID);
-			$drinkTraits = $drinkTraitsQuery->fetchAll();
-			$drinkTraitsQuery->closeCursor();
+			$drinkTraits = $dbconn->query("SELECT * FROM `dtraits` WHERE id = ".$drinkID)->fetchAll();
 			//Array of format [[id,trait][id,trait]]
 			$currentSimilarity = 0;
 			foreach($userPreferences as $userP){
