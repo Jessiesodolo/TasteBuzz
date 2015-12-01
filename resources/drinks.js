@@ -35,10 +35,9 @@ $(document).ready(function(){
 		$.ajax({
 			url: 'query.php',
 			method: 'POST',
-			data: {action : 'getAllDrinks'}
+			data: {action : 'getAllDrinks'},
 		}).done(function(data){
-			var temp = JSON.parse(data);
-			console.log(temp);
+			console.log(data);
 		}).fail(function(jqXHR, status){
 			console.log('error: ' + status);
 		});
