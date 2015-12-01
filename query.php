@@ -95,6 +95,7 @@
 	}
 	
 	function getAllDrinks(){
+		$dbconn = getDBConn();
 		$dArray = array();
 		foreach($dbconn->query("SELECT * FROM `dinfo`") as $drinkNameRow){
 			array_push($dArray,$drinkNameRow["dname"]);
