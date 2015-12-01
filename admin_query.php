@@ -82,7 +82,7 @@
 	function getUsers(){
 		$uArray = array();
 		foreach($dbconn->query("SELECT * FROM `users`") as $userRow){
-			array_push($uArray,$userRow["dname"]);
+			array_push($uArray,array($userRow["fname"],$userRow["lname"],$userRow["id"]));
 		}
 		echo json_encode($uArray);
 	}
