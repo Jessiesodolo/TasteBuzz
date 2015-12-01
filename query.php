@@ -77,6 +77,7 @@
 	}
 	
 	function getDrinkInfo(){
+		$dbconn = getDBConn();
 		$drinkName = $_POST["drinkName"];
 		$stmt = $dbconn->prepare("SELECT * FROM `dinfo` WHERE `dname` = :dname");
 		$stmt->bindParam(':dname', $drinkName);

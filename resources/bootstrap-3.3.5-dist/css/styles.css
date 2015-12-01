@@ -213,3 +213,22 @@ footer .nav>li>a:hover {
   line-height: 1.1;
   background-color: rgba(255,255,255,.7);
 }
+
+.all-drink-image{
+  background-size: cover;
+  background-color: gray;
+}
+
+#drink-image{
+  max-height: 300px;
+  max-width: 200px;
+}
+
+#allDrinks > :nth-child(odd){
+  background-color: rgba(255,255,255,.7);
+}
+
+#allDrinks > :nth-child(even){
+  background-color: rgba(0,0,0,.7);
+  color: white;
+}

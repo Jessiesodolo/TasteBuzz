@@ -38,8 +38,42 @@ $(document).ready(function(){
 			data: {action : 'getAllDrinks'}
 		}).done(function(data){
 			var temp = JSON.parse(data);
+			var count = 0;
 			for(x in temp){
-				$('#allDrinks').append('<div class="col-lg-4"><a href="#"><img src="' + temp[x][1] + '"></a></div>')
+				var name = temp[x][0]
+				console.log(name);
+				(function(x){
+				$.ajax({
+					method: 'POST',
+					data: {action: 'getDrinkInfo', drinkName: name},
+					url: 'query.php'
+				}).done(function(data){
+					var drink = JSON.parse(data);
+					//console.log(drink);
+					console.log(count);
+					if(count%2 == 0){ //even
+						count++;
+						console.log('even');
+						$('#allDrinks').append('<div class="media"><div class="media-left">' + 
+						'<img class="media-object" id="drink-image" src="' + drink.img_addr + '"></div><div'+
+						' class="media-body"><h2 class="media-title">' + drink.dname + '</h2><p>' + drink.description + '</p></div></div>')
+					}
+					else{ //odd
+						count++;
+						console.log('odd x');
+						$('#allDrinks').append('<div class="media"><div class="media-body"><h2 class="media-title">' + 
+							drink.dname + '</h2><p>' + drink.description + '</p></div><div class="media-right">' + 
+						'<img class="media-object" id="drink-image" src="' + drink.img_addr + '"></div></div>')
+					}
+
+					/*$('#drink-description').append('');
+					$('#drink-image').html('');
+					$('#drink-description').append('');*/
+
+				}).fail(function(jqXHR, status){
+					console.log('error: ' + status);
+				});})(x);
+				//$('#allDrinks').append('<div class="col-sm-4" style="margin-bottom: 15px"><h3 style="color: white;">' + temp[x][0] + '</h3><a href="drink.php?name=' + temp[x][0] + '"><div class="col-xs-12 center-block all-drink-image" style="background: center no-repeat url(' + temp[x][1] + ') gray; height: 200px"></div></a></div>')
 			}
 			console.log(temp);
 		}).fail(function(jqXHR, status){
