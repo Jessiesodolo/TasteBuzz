@@ -82,7 +82,7 @@
 		$stmt = $dbconn->prepare("SELECT * FROM `dinfo` WHERE `dname` = :dname");
 		$stmt->bindParam(':dname', $drinkName);
 		$stmt->execute();
-		echo json_encode($stmt->fetch());
+		echo json_encode(array_slice($stmt->fetch(),4));
 	}
 	
 	function getDrinkTraits(){
@@ -140,7 +140,7 @@
 					}
 				}
 			}
-			array_push($simArray,array($currentSimilarity,$drinkNameRow["dname"],$drinkNameRow["description"],$drinkNameRow["img_addr"]));
+			array_push($simArray,array($currentSimilarity,$drinkNameRow["dname"],$drinkNameRow["img_addr"]));
 		}
 		usort($simArray,"sortComparator");
 		echo json_encode($simArray);
