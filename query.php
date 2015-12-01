@@ -78,7 +78,7 @@
 		$stmt = $dbconn->prepare("SELECT * FROM `dinfo` WHERE `dname` = :dname");
 		$stmt->bindParam(':dname', $drinkName);
 		$stmt->execute();
-		echo json_encode($stmt->fetch());
+		echo json_encode($stmt->fetch(PDO::FETCH_ASSOC));
 	}
 	
 	function getDrinkTraits(){
