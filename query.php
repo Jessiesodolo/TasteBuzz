@@ -106,8 +106,8 @@
 	}
 	
 	function sortComparator($a,$b){
-		$val1 = $a[1];
-		$val2 = $b[1];
+		$val1 = $a[0];
+		$val2 = $b[0];
 		if($val1 == $val2){
 			return 0;
 		}
@@ -138,10 +138,10 @@
 					}
 				}
 			}
-			array_push($simArray,array($drinkNameRow["dname"],$currentSimilarity,$drinkNameRow["description"],$drinkNameRow["img_addr"]));
+			array_push($simArray,array($currentSimilarity,$drinkNameRow["dname"],$drinkNameRow["description"],$drinkNameRow["img_addr"]));
 		}
-		usort($simArray,"sortComparator");
-		echo json_encode($simArray);
+		$r = usort($simArray,"sortComparator");
+		echo $r;
 	}
 	
 	function addPref(){
