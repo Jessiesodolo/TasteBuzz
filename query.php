@@ -9,7 +9,7 @@
 		$dbconn = getDBConn();
 		$id_range = $dbconn->query("SELECT COUNT(*) FROM `dinfo`")->rowCount();
 		$to_select = rand(0,$id_range);
-		$drink = $dbconn-query("SELECT `dname` FROM `dinfo` WHERE `id` = $to_select")->fetch();
+		$drink = $dbconn->query("SELECT `dname` FROM `dinfo` WHERE `id` = $to_select")->fetch();
 		echo "{\"drink_name\" : ".$drink["dname"]."}";
 	}
 	
