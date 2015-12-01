@@ -102,10 +102,11 @@
 				}
 			}
 		}
-		echo "{\"drink_name\" : ".$bestDrink.", \"drink_traits\" : ".json_encode($bestDrinkTraits).", \"desc\" : ".$bestDrinkDesc.", \"url\" : ".$bestDrinkUrl."}";
+		echo "{\"dname\" : \"".$bestDrink."\", \"drink_traits\" : ".json_encode($bestDrinkTraits).", \"description\" : \"".$bestDrinkDesc."\", \"img_addr\" : \"".$bestDrinkUrl."\"}";
 	}
 	
 	function getDrinkInfo(){
+		$dbconn = getDBConn();
 		$drinkName = $_POST["drinkName"];
 		$stmt = $dbconn->prepare("SELECT * FROM `dinfo` WHERE `dname` = :dname");
 		$stmt->bindParam(':dname', $drinkName);
