@@ -170,6 +170,15 @@
 		echo json_encode($uArray);
 	}
 	
+	function doSearch(){
+		$dbconn = getDBConn();
+		$searchTerm = $_POST["searchTerm"];
+		$stmt = $dbconn->prepare("SELECT * FROM `dinfo` INNER JOIN `dtraits` ON dtraits.id = dinfo.id INNER JOIN `dtraits` ON dtraits.trait = :trait");
+		$stmt->bindParam(":trait",$searchTerm);
+		$stmt->execute();
+		echo json_encode($stmt->fetchAll());
+	}
+	
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		session_start();
 		if($_SESSION['login'] == true){
@@ -203,6 +212,9 @@
 					break;
 				case "getRandomBestDrink":
 					getRandomBestDrink();
+					break;
+				case "doSearch":
+					doSearch();
 					break;
 			}
 		}
