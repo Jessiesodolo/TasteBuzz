@@ -58,7 +58,7 @@
 			foreach($userPreferences as $userP){
 				foreach($drinkTraits as $drinkP){
 					if($drinkP["trait"] == $userP["pref"]){
-						$currentSimilarity++;
+						$currentSimilarity+=1;
 					}
 				}
 			}
@@ -118,17 +118,24 @@
 	function getSortedDrinks(){
 		$dbconn = getDBConn();
 		$userID = $_SESSION['uid'];
-		$userPreferences = $dbconn->query("SELECT * FROM `userprefs` WHERE id = ".$userID)->fetchAll();
+		$userPrefQuery = $dbconn->query("SELECT * FROM `userprefs` WHERE `id` = ".$userID);
+		$userPreferences = $userPrefQuery->->fetchAll();
+		$userPrefQuery->closeCursor();
 		$simArray = array();
-		foreach($dbconn->query("SELECT * FROM `dinfo`") as $drinkNameRow){
+		$drinkInfoQuery = $dbconn->query("SELECT * FROM `dinfo`");
+		$drinkInfo = $drinkInfoQuery->fetchAll();
+		$drinkInfoQuery->closeCursor();
+		foreach($drinkInfo as $drinkNameRow){
 			$drinkID = $drinkNameRow["id"];
-			$drinkTraits = $dbconn->query("SELECT * FROM `dtraits` WHERE id = ".$drinkID)->fetchAll();
+			$drinkTraitsQuery = $dbconn->query("SELECT * FROM `dtraits` WHERE id = ".$drinkID);
+			$drinkTraits = $drinkTraitsQuery->fetchAll();
+			$drinkTraitsQuery->closeCursor();
 			//Array of format [[id,trait][id,trait]]
 			$currentSimilarity = 0;
 			foreach($userPreferences as $userP){
 				foreach($drinkTraits as $drinkP){
 					if($drinkP["trait"] == $userP["pref"]){
-						$currentSimilarity++;
+						$currentSimilarity+=1;
 					}
 				}
 			}
