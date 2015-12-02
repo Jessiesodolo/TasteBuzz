@@ -18,7 +18,7 @@ $(document).ready(function(){
 	var params = parseQueryString();
 	//console.log(params["type"]);
 	if(params["type"] == 'best'){
-
+		$('#drinks-header').html('<div class="page-header"><h1 style="color: white;">The Drink For You</h1></div>');
 		$.ajax({
 			url: 'query.php',
 			method: 'POST',
@@ -79,6 +79,8 @@ $(document).ready(function(){
 		});
 	}
 	else if (params['type'] == 'all'){
+		$('#drinks-header').html('<div class="page-header"><h1 style="color: white">All Drinks</h1></div>');
+		$('#drink-search').html('<div class="row" style="margin-bottom: 15px;"><div class="col-lg-6 col-lg-offset-3"><div class="input-group"><input type="text" class="form-control" placeholder="Search By Traits"><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span></div><!-- /input-group --></div><!-- /.col-lg-6 --></div>');
 		$('.featurette-divider').hide();
 		$.ajax({
 			url: 'query.php',
