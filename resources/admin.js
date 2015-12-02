@@ -1,4 +1,4 @@
-function ValidateAdmin(){
+/*function ValidateAdmin(){
   $("#adddrink").click(function(){
       if(!$("#ddes").val() || !$("#Dname").val() || !$("#imgurl").val() ){ 
             alert("Please fill in all fields");
@@ -30,11 +30,11 @@ function ValidateAdmin(){
     } 
   });
 }
-
+*/
 
 $(document).ready(function(){
 
-    var a = ValidateAdmin();
+    //var a = ValidateAdmin();
 
     // These Ajax calls aren't working, the calls are fine but the php function is not returning any data
     //
@@ -45,10 +45,11 @@ $(document).ready(function(){
        data:{action:'getDrinks'},
        success:function(data) {
         $('.terms.drink').first().html(data);
-       }, error: function(msg) {
-                  // there was a problem
-            console.log("There was a problem: " + msg.status + " " + msg.statusText);
-          }
+       },
+       error: function(msg) {
+                // there was a problem
+          console.log("There was a problem: " + msg.status + " " + msg.statusText);
+       }
 
     });
 
@@ -57,7 +58,7 @@ $(document).ready(function(){
        url: 'admin_query.php',
        data:{action:'getUsers'},
        success:function(data) {
-        $('.terms.user').html(data);
+          $('.terms.user').html(data);
        }
     });
 });
