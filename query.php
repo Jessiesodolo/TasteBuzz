@@ -183,42 +183,44 @@
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		session_start();
-		if($_SESSION['login'] == true){
-			switch($_POST["action"]){
-				case "getRandomDrink":
-					getRandomDrink();
-					break;
-				case "getBestDrink":
-					getBestDrink();
-					break;
-				case "getSortedDrinks":
-					getSortedDrinks();
-					break;
-				case "addPref":
-					addPref();
-					break;
-				case "removePref":
-					removePref();
-					break;
-				case "getAllDrinks":
-					getAllDrinks();
-					break;
-				case "getPreferences":
-					getPreferences();
-					break;
-				case "getDrinkTraits":
-					getDrinkTraits();
-					break;
-				case "getDrinkInfo":
-					getDrinkInfo();
-					break;
-				case "getRandomBestDrink":
-					getRandomBestDrink();
-					break;
-				case "doSearch":
-					doSearch();
-					break;
+		if(isset($_SESSION["login"])){
+			if($_SESSION['login'] == true){
+				switch($_POST["action"]){
+					case "getRandomDrink":
+						getRandomDrink();
+						break;
+					case "getBestDrink":
+						getBestDrink();
+						break;
+					case "getSortedDrinks":
+						getSortedDrinks();
+						break;
+					case "addPref":
+						addPref();
+						break;
+					case "removePref":
+						removePref();
+						break;
+					case "getAllDrinks":
+						getAllDrinks();
+						break;
+					case "getPreferences":
+						getPreferences();
+						break;
+					case "getDrinkTraits":
+						getDrinkTraits();
+						break;
+					case "getDrinkInfo":
+						getDrinkInfo();
+						break;
+					case "getRandomBestDrink":
+						getRandomBestDrink();
+						break;
+					case "doSearch":
+						doSearch();
+						break;
 
+				}
 			}
 		}
 	}
