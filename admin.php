@@ -24,7 +24,7 @@
       <h3>Add Drink:</h3>
       <form role="form" action="admin_query.php" method="post" id ="adddrink">
         <div class="form-group col-sm-6">
-             <label for="Drinkname">Enter Drink Name:</label>
+            <label for="Drinkname">Enter Drink Name:</label>
             <input type="text" class="form-control" id ="Dname" name="Dname"> 
         </div>
         <div class="form-group col-sm-8">
@@ -41,7 +41,7 @@
       </form>
 
       <div class="clearfix">
-          <h3>Remove Drink:</h3>
+        <h3>Remove Drink:</h3>
         <form role="form" action="admin_query.php" method="post" id ="removedrink">
              <div class="form-group col-sm-6">
                  <label for="drinkID">Enter Drink ID:</label>
