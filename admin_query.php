@@ -32,12 +32,10 @@
 	}
 	
 	function removeDrinkTrait(){
-		$drinkTrait = $_POST["drinkTrait"];
-		$drinkID = $_POST["drinkID"];
+		$drinkTraitNum = $_POST["drinkTraitNum"];
 		$dbcon = getDBConn();
-		$stmt = $dbcon->prepare("DELETE FROM `dtraits` WHERE id = :id AND trait = :trait");
-		$stmt->bindParam(':id', $drinkID);
-		$stmt->bindParam(':trait', $drinkTrait);
+		$stmt = $dbcon->prepare("DELETE FROM `dtraits` WHERE traitnum = :tnum");
+		$stmt->bindParam(':tnum', $drinkTraitNum);
 		$stmt->execute();
 		$count = $stmt->rowCount();
 		header("Location: admin.php");
@@ -54,10 +52,15 @@
 	function getDrinks(){
 		$dbconn = getDBConn();
 		$sql = "SELECT `id`,`dname` FROM `dinfo`";
-		$result = $dbconn->query($sql);
-		echo json_encode($result->fetchAll(PDO::FETCH_ASSOC));
+		$toRet = array();
+		foreach($dbconn->query($sql) as $dnameRow){
+			$dID = $dnameRow["id"];
+			$sql2 = "SELECT * FROM `dtraits` WHERE id = ".$dID;
+			$traitsQ = $dbconn->query($sql2);
+			array_push($toRet,array($dID,$dnameRow["dname"],$traitsQ->fetchAll(PDO::FETCH_ASSOC)));
+		}
+		echo json_encode($toRet);
 	}
-
 	
 	function removeUser(){
 		$dbcon = getDBConn();
@@ -121,6 +124,9 @@
 					break;
 				case "addAdmin":
 					addAdmin();
+					break;
+				case "getDrinkNamesAndTraits":
+					getDrinkNamesAndTraits();
 					break;
 			}
 		}

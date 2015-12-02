@@ -21,7 +21,6 @@
           
       </div>
 
-
       <div class="container">
         <h3>Add Drink:</h3>
         <form role="form" action="admin_query.php" method="post" id ="adddrink">
@@ -57,7 +56,7 @@
               <input type="text" class="form-control" id ="drinkTrait" name="drinkTrait">
           </div>
           <div class="form-group col-xs-12">
-            <button type="submit" id="addrink" name="addrink" class="btn btn-default pull-left ">Add Drink</button>
+            <button type="submit" id="addrink" name="addrink" class="btn btn-default pull-left ">Add Trait</button>
           </div>
         </form>
       </div>
@@ -67,15 +66,11 @@
         <form role="form" action="admin_query.php" method="post" id ="removeDrinkTrait">
   		  <input type="hidden" id="action" name="action" value="removeDrinkTrait">
           <div class="form-group col-sm-6">
-              <label for="drinkID">Enter Drink ID:</label>
-              <input type="text" class="form-control" id ="drinkID" name="drinkID"> 
-          </div>
-          <div class="form-group col-sm-8">
-              <label for="drinkTrait">Enter Drink Trait:</label>
-              <input type="text" class="form-control" id ="drinkTrait" name="drinkTrait">
+              <label for="drinkTraitNum">Enter Drink Trait Number:</label>
+              <input type="text" class="form-control" id ="drinkTraitNum" name="drinkTraitNum"> 
           </div>
           <div class="form-group col-xs-12">
-            <button type="submit" id="addrink" name="addrink" class="btn btn-default pull-left ">Add Drink</button>
+            <button type="submit" id="addrink" name="addrink" class="btn btn-default pull-left ">Remove Trait</button>
           </div>
         </form>
       </div>
