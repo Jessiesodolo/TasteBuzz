@@ -37,8 +37,20 @@
             <textarea class="form-control " rows="3" id="drinkURL" name="drinkURL" placeholder="Copy Image url here"></textarea>
             <div class=" clearfix"> <button type="submit" id="addrink" name="addrink" class="btn btn-default pull-left ">Add Drink</button> </div>
         </div>
-        
-       
+      </form>
+	  
+	   <h3>Add Drink Trait:</h3>
+	  <form role="form" action="admin_query.php" method="post" id ="addDrinkTrait">
+		  <input type="hidden" id="action" name="action" value="addDrinkTrait">
+        <div class="form-group col-sm-6">
+            <label for="drinkID">Enter Drink ID:</label>
+            <input type="text" class="form-control" id ="drinkID" name="drinkID"> 
+        </div>
+        <div class="form-group col-sm-8">
+            <label for="drinkTrait">Enter Trait:</label>
+            <input type="text" class="form-control" id ="drinkTrait" name="drinkTrait"> 
+			 <div class=" clearfix"> <button type="submit" id="addrink" name="addrink" class="btn btn-default pull-left ">Add Trait</button> </div>
+        </div>
       </form>
 
       <div class="clearfix">

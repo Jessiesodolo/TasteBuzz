@@ -116,9 +116,6 @@
 				case "AddAdmin":
 					AddDrink();
 					break;
-				case "AddDr":
-					AddDr();
-					break;
 				case "getDrinks":
 					getDrinks();
 					break;
