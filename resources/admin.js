@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*function ValidateAdmin(){
   $("#adddrink").click(function(){
       if(!$("#ddes").val() || !$("#Dname").val() || !$("#imgurl").val() ){ 
