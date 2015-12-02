@@ -35,7 +35,7 @@
 		$drinkTrait = $_POST["drinkTrait"];
 		$drinkID = $_POST["drinkID"];
 		$dbcon = getDBConn();
-		$stmt = $dbcon->prepare("DELETE FROM `dtraits` WHERE id = :id, trait = :trait");
+		$stmt = $dbcon->prepare("DELETE FROM `dtraits` WHERE id = :id AND trait = :trait");
 		$stmt->bindParam(':id', $drinkID);
 		$stmt->bindParam(':trait', $drinkTrait);
 		$stmt->execute();
