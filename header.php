@@ -44,10 +44,7 @@
                                 <ul class="dropdown-menu">
                                 <li><a href="preferences.php">Preferences</a></li>
                                 <li role="separator" class="divider"></li>
-                                    <li><form action="login.php" method="post" id="logout">
-                                        <button class="navbar-btn" type="submit">Logout</button>
-                                        <input type="hidden" name="function" id="function" value="logout">
-                                    </form></li>
+                                <li><a href="#" onclick="logout()">Logout</a></li>
                                 </ul>
                               </li>';
                     }
@@ -60,3 +57,4 @@
        
     </div>
 </nav>
+<script src="resources/header.js"></script>

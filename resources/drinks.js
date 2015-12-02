@@ -86,6 +86,7 @@ $(document).ready(function(){
 			method: 'POST',
 			data: {action : 'getAllDrinks'}
 		}).done(function(data){
+			console.log(data);
 			var temp = JSON.parse(data);
 			var count = 0;
 			for(x in temp){
