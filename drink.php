@@ -20,18 +20,28 @@
     <section class="nav-padding">
 
         <div class="container">
-            <!--header page stuff-->
+            
         </div>
-        <div class="container" id="drink-search">
-        </div>
+        <!--
         <div class="container" id="best-drink">
-            
-        </div>
-        <div class="container">
-        <hr class="featurette-divider">
-    </div>
-        <div class="container" id="allDrinks">
-            
+            <div class="row" id="drink-title">
+            </div>
+            <div class="row row-space-6">
+                <div class="col-sm-8" id="drink-image">
+                    
+                </div>
+                <div class="col-sm-4" id="drink-description">
+                    
+                </div>
+            </div>
+        </div>-->
+        <div class="container media" id="best-drink">
+            <div class="media-left" id="drink-image">
+
+            </div>
+            <div class="media-body" id="drink-description">
+
+            </div>
         </div>
 
     </section>
@@ -48,6 +58,6 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="resources/scripts.js"></script>
-    <script src="resources/drinks.js"></script>
+    <script src="resources/drink.js"></script>
   </body>
 </html>

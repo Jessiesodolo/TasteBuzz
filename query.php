@@ -13,6 +13,15 @@
 		echo "{\"drink_name\" : ".$drink["dname"]."}";
 	}
 	
+	function sortComparator($a,$b){
+		$val1 = $a[0];
+		$val2 = $b[0];
+		if($val1 == $val2){
+			return 0;
+		}
+		return ($val1 < $val2) ? 1 : -1;
+	}
+	
 	function getRandomBestDrink(){
 		$dbconn = getDBConn();
 		$userID = $_SESSION['uid'];
@@ -38,6 +47,29 @@
 		echo json_encode($randElement[0]);
 	}
 	
+	function getSortedDrinks(){
+		$dbconn = getDBConn();
+		$userID = $_SESSION['uid'];
+		$userPreferences = $dbconn->query("SELECT * FROM `userprefs` WHERE `id` = ".$userID)->fetchAll();
+		$simArray = array();
+		foreach($dbconn->query("SELECT * FROM `dinfo`") as $drinkNameRow){
+			$drinkID = $drinkNameRow["id"];
+			$drinkTraits = $dbconn->query("SELECT * FROM `dtraits` WHERE id = ".$drinkID)->fetchAll();
+			//Array of format [[id,trait][id,trait]]
+			$currentSimilarity = 0;
+			foreach($userPreferences as $userP){
+				foreach($drinkTraits as $drinkP){
+					if($drinkP["trait"] == $userP["pref"]){
+						$currentSimilarity+=1;
+					}
+				}
+			}
+			array_push($simArray,array($currentSimilarity,$drinkNameRow["dname"],$drinkNameRow["img_addr"]));
+		}
+		usort($simArray,"sortComparator");
+		echo json_encode($simArray);
+	}
+	
 	function getBestDrink(){
 		$dbconn = getDBConn();
 		$userID = $_SESSION['uid'];
@@ -47,10 +79,7 @@
 		$bestDrinkTraits = array();
 		$bestDrinkDesc = "";
 		$bestDrinkUrl = "";
-		$result = $dbconn->query("SELECT * FROM `dinfo`");
-		$drinks = $result->fetchAll();
-		$result->closeCursor();
-		foreach($drinks as $drinkNameRow){
+		foreach($dbconn->query("SELECT * FROM `dinfo`") as $drinkNameRow){
 			$drinkID = $drinkNameRow["id"];
 			$drinkTraits = $dbconn->query("SELECT * FROM `dtraits` WHERE `id` = ".$drinkID)->fetchAll();
 			//Array of format [[id,trait][id,trait]]
@@ -73,15 +102,16 @@
 				}
 			}
 		}
-		echo "{\"drink_name\" : ".$bestDrink.", \"drink_traits\" : ".json_encode($bestDrinkTraits).", \"desc\" : ".$bestDrinkDesc.", \"url\" : ".$bestDrinkUrl."}";
+		echo "{\"dname\" : \"".$bestDrink."\", \"drink_traits\" : ".json_encode($bestDrinkTraits).", \"description\" : \"".$bestDrinkDesc."\", \"img_addr\" : \"".$bestDrinkUrl."\"}";
 	}
 	
 	function getDrinkInfo(){
+		$dbconn = getDBConn();
 		$drinkName = $_POST["drinkName"];
 		$stmt = $dbconn->prepare("SELECT * FROM `dinfo` WHERE `dname` = :dname");
 		$stmt->bindParam(':dname', $drinkName);
 		$stmt->execute();
-		echo json_encode($stmt->fetch());
+		echo json_encode($stmt->fetch(PDO::FETCH_ASSOC));
 	}
 	
 	function getDrinkTraits(){
@@ -104,45 +134,6 @@
 			array_push($dArray,array($drinkNameRow["dname"],$drinkNameRow["img_addr"]));
 		}
 		echo json_encode($dArray);
-	}
-	
-	function sortComparator($a,$b){
-		$val1 = $a[0];
-		$val2 = $b[0];
-		if($val1 == $val2){
-			return 0;
-		}
-		return ($val1 < $val2) ? 1 : -1;
-	}
-	
-	function getSortedDrinks(){
-		$dbconn = getDBConn();
-		$userID = $_SESSION['uid'];
-		$userPrefQuery = $dbconn->query("SELECT * FROM `userprefs` WHERE `id` = ".$userID);
-		$userPreferences = $userPrefQuery->fetchAll();
-		$userPrefQuery->closeCursor();
-		$simArray = array();
-		$drinkInfoQuery = $dbconn->query("SELECT * FROM `dinfo`");
-		$drinkInfo = $drinkInfoQuery->fetchAll();
-		$drinkInfoQuery->closeCursor();
-		foreach($drinkInfo as $drinkNameRow){
-			$drinkID = $drinkNameRow["id"];
-			$drinkTraitsQuery = $dbconn->query("SELECT * FROM `dtraits` WHERE id = ".$drinkID);
-			$drinkTraits = $drinkTraitsQuery->fetchAll();
-			$drinkTraitsQuery->closeCursor();
-			//Array of format [[id,trait][id,trait]]
-			$currentSimilarity = 0;
-			foreach($userPreferences as $userP){
-				foreach($drinkTraits as $drinkP){
-					if($drinkP["trait"] == $userP["pref"]){
-						$currentSimilarity+=1;
-					}
-				}
-			}
-			array_push($simArray,array($currentSimilarity,$drinkNameRow["dname"],$drinkNameRow["img_addr"]));
-		}
-		usort($simArray,"sortComparator");
-		echo json_encode($simArray);
 	}
 	
 	function addPref(){
@@ -178,7 +169,18 @@
 		}
 		echo json_encode($uArray);
 	}
+
 		
+	function doSearch(){
+		$dbconn = getDBConn();
+		$searchTerm = $_POST["searchTerm"];
+		$stmt = $dbconn->prepare("SELECT * FROM `dinfo` INNER JOIN `dtraits` ON dtraits.id = dinfo.id AND dtraits.trait = :trait");
+		$stmt->bindParam(":trait",$searchTerm);
+		$stmt->execute();
+		echo json_encode($stmt->fetchAll());
+	}
+	
+
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		session_start();
 		if($_SESSION['login'] == true){
@@ -213,8 +215,10 @@
 				case "getRandomBestDrink":
 					getRandomBestDrink();
 					break;
-			
-			
+				case "doSearch":
+					doSearch();
+					break;
+
 			}
 		}
 	}

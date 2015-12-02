@@ -56,6 +56,17 @@
 	    
 	}
 
+	
+	function AllUsers(){
+		$uArray = array();
+		foreach($dbconn->query("SELECT * FROM `users`") as $userRow){
+			array_push($uArray,array($userRow["fname"],$userRow["lname"],$userRow["id"]));
+		}
+		echo json_encode($uArray);
+
+	}
+
+
 	function getDrinks(){
 		$dbconn = getDBConn();
 		$sql = "SELECT * FROM `dinfo`";
@@ -101,6 +112,7 @@
 	}
 
 
+
 	if (isset($_POST['addrink']) ) {
 		$dbconn = getDBConn();
 		$stmt = $dbconn->prepare("INSERT INTO `dinfo`(dname,description,img_addr) VALUES (?,?,?)");
@@ -118,7 +130,6 @@
 		$stmt->execute();
 
 		 header('Location: admin.php');
-	}
 
 	
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
