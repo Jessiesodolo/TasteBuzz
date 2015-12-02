@@ -1,6 +1,12 @@
+
+/*function ValidateAdmin(){
+  $("#adddrink").click(function(){
+      if(!$("#ddes").val() || !$("#Dname").val() || !$("#imgurl").val() ){ 
+=======
 function ValidateAdmin(){
 	$("#adddrink").click(function(){
 		if(!$("#ddes").val() || !$("#Dname").val() || !$("#imgurl").val() ){ 
+>>>>>>> 471fe4445078e6bd1bcc836da66a83df5d6acfd5
             alert("Please fill in all fields");
             return false;
 		}
@@ -30,9 +36,10 @@ function ValidateAdmin(){
 		} 
 	});
 }
-
+*/
 
 $(document).ready(function(){
+
 	
     //var a = ValidateAdmin();
 	
@@ -45,7 +52,7 @@ $(document).ready(function(){
 		data:{action:'getDrinks'},
 		success:function(data) {
 			var drinkData = JSON.parse(data);
-			$('.terms.drink').first().append("<p>ID Name</p>");
+			/*$('.terms.drink').append("<p>ID Name</p>");*/
 			for(i = 0; i < drinkData.length; i++){
 				jObj = drinkData[i];
 				$('.terms.drink').first().append("<p>" + jObj["id"]+" "+jObj["dname"] + "</p>");

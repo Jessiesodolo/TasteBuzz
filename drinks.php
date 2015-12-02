@@ -19,7 +19,7 @@
     
     <section class="nav-padding">
 
-        <div class="container">
+        <div class="container" id="drinks-header">
             <!--header page stuff-->
         </div>
         <div class="container" id="drink-search">
