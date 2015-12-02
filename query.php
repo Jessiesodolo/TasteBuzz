@@ -178,7 +178,7 @@
 		}
 		echo json_encode($uArray);
 	}
-	
+		
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		session_start();
 		if($_SESSION['login'] == true){
@@ -213,6 +213,8 @@
 				case "getRandomBestDrink":
 					getRandomBestDrink();
 					break;
+			
+			
 			}
 		}
 	}
