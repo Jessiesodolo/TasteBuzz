@@ -16,7 +16,7 @@
 		$stmt->bindParam(':img_addr', $drinkURL);
 		$stmt->execute();
 		$count = $stmt->rowCount();
-		$echo "{success : $count}";
+		//$echo "{success : $count}";
 	}
 	
 	function addDrinkTrait(){
@@ -28,7 +28,7 @@
 		$stmt->bindParam(':trait', $drinkTrait);
 		$stmt->execute();
 		$count = $stmt->rowCount();
-		$echo "{success : $count}";
+		//$echo "{success : $count}";
 	}
 	
 	function removeDrinkTrait(){
@@ -40,52 +40,97 @@
 		$stmt->bindParam(':trait', $drinkTrait);
 		$stmt->execute();
 		$count = $stmt->rowCount();
-		$echo "{success : $count}";
+		//$echo "{success : $count}";
 	}
 	
-	function removeDrink(){
-		$drinkID = $_POST["drinkID"];
-		$dbcon = getDBConn();
-		$stmt = $dbcon->prepare("DELETE FROM `dinfo` WHERE id = :id");
-		$stmt->bindParam(':id', $drinkID);
-		$stmt->execute();
-		$count = $stmt->rowCount();
-		
-		$stmt2 = $dbcon->prepare("DELETE FROM `dtraits` WHERE id = :id");
-		$stmt2->bindParam(':id', $drinkID);
-		$stmt2->execute();
-		$count2 = $stmt2->rowCount();
-		
-		$success = $count && $count2;
-		
-		$echo "{success : $success}";
-	}
-	
-	function removeUser(){
-		$userID = $_POST["uid"];
-		$dbcon = getDBConn();
-		$stmt = $dbcon->prepare("DELETE FROM `users` WHERE id = :id");
-		$stmt->bindParam(':id', $userID);
-		$stmt->execute();
-		$count = $stmt->rowCount();
-		
-		$stmt2 = $dbcon->prepare("DELETE FROM `userprefs` WHERE id = :id");
-		$stmt2->bindParam(':id', $userID);
-		$stmt2->execute();
-		$count2 = $stmt2->rowCount();
-		
-		$success = $count && $count2;
-		
-		$echo "{success : $success}";
-	}
 	
 	function getUsers(){
+		$dbconn = getDBConn();
+		$sql = "SELECT * FROM `users`";
+    $result = $dbconn->query($sql);
+     echo "<em>All Users</em>";
+      while ($db_field = $result->fetch(PDO::FETCH_ASSOC) ) {
+            echo  "\n" . "|" . $db_field['id'] . "|" . $db_field['fname'] . "|" . $db_field['lname'] . "\n";
+
+        }
+	    
+	}
+
+	
+	function AllUsers(){
 		$uArray = array();
 		foreach($dbconn->query("SELECT * FROM `users`") as $userRow){
-			array_push($uArray,$userRow["dname"]);
+			array_push($uArray,array($userRow["fname"],$userRow["lname"],$userRow["id"]));
 		}
 		echo json_encode($uArray);
+
 	}
+
+
+	function getDrinks(){
+		$dbconn = getDBConn();
+		$sql = "SELECT * FROM `dinfo`";
+    $result = $dbconn->query($sql);
+     echo "<em>All Drinks</em>";
+      while ($db_field = $result->fetch(PDO::FETCH_ASSOC) ) {
+            echo  "\n" . "|" . $db_field['id'] . "|" . $db_field['dname'] .  "\n";
+        }
+	}
+
+	
+	if (isset($_POST['removeduser']) ) {
+		$dbcon = getDBConn();
+		$stmt = $dbcon->prepare("DELETE FROM `users` WHERE  fname = :fname AND lname = :lname");
+		$stmt->bindParam(':fname', $_POST['firstName']);
+		$stmt->bindParam(':lname', $_POST['lastName']); 
+		$stmt->execute();
+
+		$stmt2 = $dbcon->prepare("DELETE FROM `userprefs` WHERE id = :id");
+		$stmt2->bindParam(':id', $_POST['Userid']); 
+		$stmt2->execute();
+
+		header('Location: admin.php');
+
+	}
+
+	// This is working but is buggy, it removes the user from the dtraits table
+
+	if (isset($_POST['removedrink']) ) {
+		
+		$dbcon = getDBConn();
+		$stmt = $dbcon->prepare("DELETE FROM `dinfo` WHERE dname = :dname");
+		$stmt->bindParam(':dname', $_POST["drinkName"]);
+		$stmt->execute();
+		
+		$stmt2 = $dbcon->prepare("DELETE FROM `dtraits` WHERE id = :id");
+		$stmt2->bindParam(':id',$_POST["drinkID"]);
+		$stmt2->execute();
+		
+
+		header('Location: admin.php');
+
+	}
+
+
+
+	if (isset($_POST['addrink']) ) {
+		$dbconn = getDBConn();
+		$stmt = $dbconn->prepare("INSERT INTO `dinfo`(dname,description,img_addr) VALUES (?,?,?)");
+		$stmt->execute(array($_POST['Dname'], $_POST['ddes'], $_POST['imgurl']));
+
+		//header("Location: admin.php"); 
+    //die("Added a drink");
+    header('Location: admin.php');
+	}
+
+	if (isset($_POST['Admin']) ) {
+		$dbconn = getDBConn();
+		$stmt = $dbconn->prepare("UPDATE `users` SET admin= 1 WHERE id = :id");
+		$stmt->bindParam(':id', $_POST['addadmin']);
+		$stmt->execute();
+
+		 header('Location: admin.php');
+
 	
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		session_start();
@@ -97,17 +142,26 @@
 				case "addDrinkTrait":
 					addDrink();
 					break;
-				case "removeDrink"
+				case "removeDrink":
 					removeDrink();
 					break;
 				case "removeDrinkTrait":
 					removeDrinkTrait();
 					break;
-				case "removeUser"
+				case "removeUser":
 					removeUser();
 					break;
 				case "getUsers":
 					getUsers();
+					break;
+				case "AddAdmin":
+					AddDrink();
+					break;
+				case "AddDr":
+					AddDr();
+					break;
+				case "getDrinks":
+					getDrinks();
 					break;
 			}
 		}
