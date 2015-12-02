@@ -23,17 +23,18 @@
       </div>
       <h3>Add Drink:</h3>
       <form role="form" action="admin_query.php" method="post" id ="adddrink">
+		  <input type="hidden" id="action" name="action" value="addDrink">
         <div class="form-group col-sm-6">
             <label for="Drinkname">Enter Drink Name:</label>
-            <input type="text" class="form-control" id ="Dname" name="Dname"> 
+            <input type="text" class="form-control" id ="drinkName" name="drinkName"> 
         </div>
         <div class="form-group col-sm-8">
             <label for="Drinkdes">Enter Drink Description:</label>
-            <textarea class="form-control" rows="5" id ="ddes" name="ddes"></textarea>
+            <textarea class="form-control" rows="5" id ="drinkDesc" name="drinkDesc"></textarea>
         </div>
         <div class="form-group col-sm-8">
             <label for="imageurl">Enter Image Url:</label>
-            <textarea class="form-control " rows="3" id="imgurl" name="imgurl" placeholder="Copy Image url here"></textarea>
+            <textarea class="form-control " rows="3" id="drinkURL" name="drinkURL" placeholder="Copy Image url here"></textarea>
             <div class=" clearfix"> <button type="submit" id="addrink" name="addrink" class="btn btn-default pull-left ">Add Drink</button> </div>
         </div>
         
@@ -43,14 +44,11 @@
       <div class="clearfix">
         <h3>Remove Drink:</h3>
         <form role="form" action="admin_query.php" method="post" id ="removedrink">
+			<input type="hidden" id="action" name="action" value="removeDrink">
              <div class="form-group col-sm-6">
                  <label for="drinkID">Enter Drink ID:</label>
                 <input type="text" class="form-control" id ="drinkID" name="drinkID" placeholder="Enter drink ID"> 
             </div>
-            <div class="form-group col-sm-6">
-                <label for="drinkName">Enter Drink Name:</label>
-                <input type="text" class="form-control" rows="3" id ="drinkName" name="drinkName" placeholder="Enter drink name" >
-           </div>
              <div class=" clearfix"> <button type="submit" id="removedrink" name="removedrink" class="btn btn-default pull-left">Remove Drink</button> </div> 
         </form>
       </div>
@@ -64,6 +62,7 @@
 
       <h3>Make user an admin:</h3>
       <form role="form" action="admin_query.php" method="post" id ="addadmin">
+		<input type="hidden" id="action" name="action" value="addAdmin">
         <div class="form-group col-sm-6">
                 <label for="addadmin">Enter User ID:</label>
                 <input type="text" class="form-control" rows="3" id ="addadmin" name="addadmin" placeholder="Enter User ID number to become admin" > 
@@ -75,15 +74,7 @@
       <div class="clearfix">
           <h3>Remove User:</h3>
         <form role="form" action="admin_query.php" method="post" id ="removeuser">
-            <div class="form-group col-sm-6">
-                <label for="removeuser">Enter First Name:</label>
-                <input type="text" class="form-control" rows="3" id ="firstName" name="firstName" placeholder="Enter User First Name to Remove " >
-           </div>
-            <div class="form-group col-sm-6">
-                <label for="removeuser">Enter Last Name:</label>
-                <input type="text" class="form-control" rows="3" id ="lastName" name="lastName" placeholder="Enter User Last Name to Remove" >
-                
-           </div>
+			<input type="hidden" id="action" name="action" value="removeUser">
             <div class="form-group col-sm-6">
                 <label for="removeuser">Enter User ID:</label>
                 <input type="text" class="form-control" rows="3" id ="Userid" name="Userid" placeholder="Enter User ID to remove preferences" >            

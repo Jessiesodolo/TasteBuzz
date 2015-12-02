@@ -16,7 +16,7 @@
 		$stmt->bindParam(':img_addr', $drinkURL);
 		$stmt->execute();
 		$count = $stmt->rowCount();
-		//$echo "{success : $count}";
+		header("Location: admin.php");
 	}
 	
 	function addDrinkTrait(){
@@ -28,7 +28,7 @@
 		$stmt->bindParam(':trait', $drinkTrait);
 		$stmt->execute();
 		$count = $stmt->rowCount();
-		//$echo "{success : $count}";
+		header("Location: admin.php");
 	}
 	
 	function removeDrinkTrait(){
@@ -40,7 +40,7 @@
 		$stmt->bindParam(':trait', $drinkTrait);
 		$stmt->execute();
 		$count = $stmt->rowCount();
-		//$echo "{success : $count}";
+		header("Location: admin.php");
 	}
 	
 	
@@ -48,38 +48,38 @@
 		$dbconn = getDBConn();
 		$sql = "SELECT * FROM `users`";
 		$result = $dbconn->query($sql);
-		echo json_encode($result->fetchAll());
+		echo json_encode($result->fetchAll(PDO::FETCH_ASSOC));
 	}
 
 	function getDrinks(){
 		$dbconn = getDBConn();
-		$sql = "SELECT * FROM `dinfo`";
-		$result = $dbconn->query($sql)->fetchAll();
-		echo json_encode($result);
+		$sql = "SELECT `id`,`dname` FROM `dinfo`";
+		$result = $dbconn->query($sql);
+		echo json_encode($result->fetchAll(PDO::FETCH_ASSOC));
 	}
 
 	
 	function removeUser(){
 		$dbcon = getDBConn();
-		$stmt = $dbcon->prepare("DELETE FROM `users` WHERE  fname = :fname AND lname = :lname");
-		$stmt->bindParam(':fname', $_POST['firstName']);
-		$stmt->bindParam(':lname', $_POST['lastName']); 
+		$stmt = $dbcon->prepare("DELETE FROM `users` WHERE  id = :id");
+		$stmt->bindParam(':id', $_POST['Userid']);
 		$stmt->execute();
-
 		$stmt2 = $dbcon->prepare("DELETE FROM `userprefs` WHERE id = :id");
 		$stmt2->bindParam(':id', $_POST['Userid']); 
 		$stmt2->execute();
+		header("Location: admin.php");
 	}
 
 
 	function removeDrink(){
 		$dbcon = getDBConn();
-		$stmt = $dbcon->prepare("DELETE FROM `dinfo` WHERE dname = :dname");
-		$stmt->bindParam(':dname', $_POST["drinkName"]);
+		$stmt = $dbcon->prepare("DELETE FROM `dinfo` WHERE id = :id");
+		$stmt->bindParam(':id', $_POST["drinkID"]);
 		$stmt->execute();
 		$stmt2 = $dbcon->prepare("DELETE FROM `dtraits` WHERE id = :id");
 		$stmt2->bindParam(':id',$_POST["drinkID"]);
 		$stmt2->execute();
+		header("Location: admin.php");
 	}
 
 	function addAdmin(){
@@ -87,6 +87,7 @@
 		$stmt = $dbconn->prepare("UPDATE `users` SET admin= 1 WHERE id = :id");
 		$stmt->bindParam(':id', $_POST['addadmin']);
 		$stmt->execute();
+		header("Location: admin.php");
 	}
 
 	
