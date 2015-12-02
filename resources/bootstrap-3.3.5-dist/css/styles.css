@@ -255,3 +255,7 @@ footer .nav>li>a:hover {
   font-size: 120%;
   color: black;
 }
+
+.admin-page{
+  background-color: rgba(255,255,255,.7);
+}

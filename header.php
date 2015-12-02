@@ -1,4 +1,4 @@
-<?php include 'loginModal.php' ?>
+
 <?php include 'login.php' ?>
 <?php 
     session_start();  
@@ -36,17 +36,33 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                     <?php
-                    if(isset($_SESSION["login"]) && $_SESSION["login"] == true){ 
-                        echo '<li role="presentation" class="dropdown">
+                    if(isset($_SESSION["login"]) && $_SESSION["login"] == true){
+                        if(isset($_SESSION['admin']) && $_SESSION['admin'] == true){
+
+                            echo '<li role="presentation" class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                   <span class="glyphicon glyphicon-user"></span>' . $_SESSION['fname'] . '<span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                 <li><a href="preferences.php">Preferences</a></li>
+                                <li><a href="admin.php">Admin Settings</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#" onclick="logout()">Logout</a></li>
                                 </ul>
                               </li>';
+                        }
+                        else{
+                            echo '<li role="presentation" class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                      <span class="glyphicon glyphicon-user"></span>' . $_SESSION['fname'] . '<span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                    <li><a href="preferences.php">Preferences</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#" onclick="logout()">Logout</a></li>
+                                    </ul>
+                                  </li>';
+                        }
                     }
                     else {
                         echo '<li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-circle-o-notch fa-lg"> Login</i></a></li>';
@@ -57,4 +73,5 @@
        
     </div>
 </nav>
+<?php include 'loginModal.php' ?>
 <script src="resources/header.js"></script>

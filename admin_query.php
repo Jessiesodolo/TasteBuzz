@@ -112,16 +112,16 @@
 	}
 
 
-
+/*
 	if (isset($_POST['addrink']) ) {
 		$dbconn = getDBConn();
 		$stmt = $dbconn->prepare("INSERT INTO `dinfo`(dname,description,img_addr) VALUES (?,?,?)");
 		$stmt->execute(array($_POST['Dname'], $_POST['ddes'], $_POST['imgurl']));
 
 		//header("Location: admin.php"); 
-    //die("Added a drink");
-    header('Location: admin.php');
-	}
+    	//die("Added a drink");
+    	header('Location: admin.php');
+	}*/
 
 	if (isset($_POST['Admin']) ) {
 		$dbconn = getDBConn();
@@ -130,11 +130,12 @@
 		$stmt->execute();
 
 		 header('Location: admin.php');
+	}
 
 	
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		session_start();
-		if($_SESSION['login'] == true && $_SESSION['admin'] == 1){
+		if(isset($_SESSION['login']) && $_SESSION['login'] == true && $_SESSION['admin'] == 1){
 			switch($_POST["action"]){
 				case "addDrink":
 					addDrink();
