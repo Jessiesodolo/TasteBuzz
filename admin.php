@@ -27,11 +27,11 @@
   		  <input type="hidden" id="action" name="action" value="addDrink">
           <div class="form-group col-sm-6">
               <label for="Drinkname">Enter Drink Name:</label>
-              <input type="text" class="form-control" id ="drinkName" name="drinkName"> 
+              <input type="text" class="form-control" id ="drinkName" name="drinkName" placeholder="Enter drink name"> 
           </div>
           <div class="form-group col-sm-8">
               <label for="Drinkdes">Enter Drink Description:</label>
-              <textarea class="form-control" rows="5" id ="drinkDesc" name="drinkDesc"></textarea>
+              <textarea class="form-control" rows="5" id ="drinkDesc" name="drinkDesc" placeholder="Enter drink description"></textarea>
           </div>
           <div class="form-group col-sm-8">
               <label for="imageurl">Enter Image Url:</label>
@@ -49,11 +49,11 @@
   		  <input type="hidden" id="action" name="action" value="addDrinkTrait">
           <div class="form-group col-sm-6">
               <label for="drinkID">Enter Drink ID:</label>
-              <input type="text" class="form-control" id ="drinkID" name="drinkID"> 
+              <input type="text" class="form-control" id ="drinkID" name="drinkID" placeholder="Enter drink ID"> 
           </div>
           <div class="form-group col-sm-8">
               <label for="drinkTrait">Enter Drink Trait:</label>
-              <input type="text" class="form-control" id ="drinkTrait" name="drinkTrait">
+              <input type="text" class="form-control" id ="drinkTrait" name="drinkTrait" placeholder="Enter drink trait">
           </div>
           <div class="form-group col-xs-12">
             <button type="submit" id="addrink" name="addrink" class="btn btn-default pull-left ">Add Trait</button>
@@ -67,7 +67,7 @@
   		  <input type="hidden" id="action" name="action" value="removeDrinkTrait">
           <div class="form-group col-sm-6">
               <label for="drinkTraitNum">Enter Drink Trait Number:</label>
-              <input type="text" class="form-control" id ="drinkTraitNum" name="drinkTraitNum"> 
+              <input type="text" class="form-control" id ="drinkTraitNum" name="drinkTraitNum" placeholder="Enter trait number"> 
           </div>
           <div class="form-group col-xs-12">
             <button type="submit" id="addrink" name="addrink" class="btn btn-default pull-left ">Remove Trait</button>
