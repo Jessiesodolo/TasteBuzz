@@ -47,38 +47,19 @@
 	function getUsers(){
 		$dbconn = getDBConn();
 		$sql = "SELECT * FROM `users`";
-    $result = $dbconn->query($sql);
-     echo "<em>All Users</em>";
-      while ($db_field = $result->fetch(PDO::FETCH_ASSOC) ) {
-            echo  "\n" . "|" . $db_field['id'] . "|" . $db_field['fname'] . "|" . $db_field['lname'] . "\n";
-
-        }
-	    
+		$result = $dbconn->query($sql);
+		echo json_encode($result->fetchAll());
 	}
-
-	
-	function AllUsers(){
-		$uArray = array();
-		foreach($dbconn->query("SELECT * FROM `users`") as $userRow){
-			array_push($uArray,array($userRow["fname"],$userRow["lname"],$userRow["id"]));
-		}
-		echo json_encode($uArray);
-
-	}
-
 
 	function getDrinks(){
 		$dbconn = getDBConn();
 		$sql = "SELECT * FROM `dinfo`";
-    $result = $dbconn->query($sql);
-     echo "<em>All Drinks</em>";
-      while ($db_field = $result->fetch(PDO::FETCH_ASSOC) ) {
-            echo  "\n" . "|" . $db_field['id'] . "|" . $db_field['dname'] .  "\n";
-        }
+		$result = $dbconn->query($sql)->fetchAll();
+		echo json_encode($result);
 	}
 
 	
-	if (isset($_POST['removeduser']) ) {
+	function removeUser(){
 		$dbcon = getDBConn();
 		$stmt = $dbcon->prepare("DELETE FROM `users` WHERE  fname = :fname AND lname = :lname");
 		$stmt->bindParam(':fname', $_POST['firstName']);
@@ -88,48 +69,24 @@
 		$stmt2 = $dbcon->prepare("DELETE FROM `userprefs` WHERE id = :id");
 		$stmt2->bindParam(':id', $_POST['Userid']); 
 		$stmt2->execute();
-
-		header('Location: admin.php');
-
 	}
 
-	// This is working but is buggy, it removes the user from the dtraits table
 
-	if (isset($_POST['removedrink']) ) {
-		
+	function removeDrink(){
 		$dbcon = getDBConn();
 		$stmt = $dbcon->prepare("DELETE FROM `dinfo` WHERE dname = :dname");
 		$stmt->bindParam(':dname', $_POST["drinkName"]);
 		$stmt->execute();
-		
 		$stmt2 = $dbcon->prepare("DELETE FROM `dtraits` WHERE id = :id");
 		$stmt2->bindParam(':id',$_POST["drinkID"]);
 		$stmt2->execute();
-		
-
-		header('Location: admin.php');
-
 	}
 
-
-/*
-	if (isset($_POST['addrink']) ) {
-		$dbconn = getDBConn();
-		$stmt = $dbconn->prepare("INSERT INTO `dinfo`(dname,description,img_addr) VALUES (?,?,?)");
-		$stmt->execute(array($_POST['Dname'], $_POST['ddes'], $_POST['imgurl']));
-
-		//header("Location: admin.php"); 
-    	//die("Added a drink");
-    	header('Location: admin.php');
-	}*/
-
-	if (isset($_POST['Admin']) ) {
+	function addAdmin(){
 		$dbconn = getDBConn();
 		$stmt = $dbconn->prepare("UPDATE `users` SET admin= 1 WHERE id = :id");
 		$stmt->bindParam(':id', $_POST['addadmin']);
 		$stmt->execute();
-
-		 header('Location: admin.php');
 	}
 
 	
@@ -163,6 +120,9 @@
 					break;
 				case "getDrinks":
 					getDrinks();
+					break;
+				case "addAdmin":
+					addAdmin();
 					break;
 			}
 		}
