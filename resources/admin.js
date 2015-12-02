@@ -52,7 +52,7 @@ $(document).ready(function(){
 		data:{action:'getDrinks'},
 		success:function(data) {
 			var drinkData = JSON.parse(data);
-			$('.terms.drink').first().append("<p>ID Name</p>");
+			/*$('.terms.drink').append("<p>ID Name</p>");*/
 			for(i = 0; i < drinkData.length; i++){
 				jObj = drinkData[i];
 				$('.terms.drink').first().append("<p>" + jObj["id"]+" "+jObj["dname"] + "</p>");
