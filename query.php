@@ -196,11 +196,14 @@
 		$numEntries = $dbconn->query($sql)->rowCount();
 		$numPages = (int)$numEntries/$NUMPERPAGE;
 		if($pageToGet < $numPages && $pageToGet >= 0){
-			$sql2 = "SELECT `dname` FROM `dinfo`";
-			$drinkInfo = $dbconn->query($sql2);
-			$drinkInfo = $drinkInfo->fetchAll(PDO::FETCH_ASSOC);
-			$finalSlice = array_slice($drinkInfo,$pageToGet*$NUMPERPAGE,($pageToGet*$NUMPERPAGE)+$NUMPERPAGE);
-			echo json_encode($finalSlice);
+			$startIndex = $pageToGet*$NUMPERPAGE;
+			$sql2 = "SELECT `dname` FROM `dinfo` OFFSET :start LIMIT :numPerPage";
+			$drinkInfo = $dbconn->prepare($sql2);
+			$drinkInfo->bindParam(":start",$startIndex);
+			$drinkInfo->bindParam(":numPerPage",$NUMPERPAGE);
+			$drinkInfo->execute();
+			$drinkInfoResult = $drinkInfo->fetchAll(PDO::FETCH_ASSOC);
+			echo json_encode($drinkInfoResult);
 		}
 	}
 
