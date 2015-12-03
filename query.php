@@ -188,16 +188,18 @@
 	}
 	
 	function getPage(){
+		$NUMPERPAGE = 5;
 		$pageToGet = $_POST["pageNumber"];
 		$pageToGet--;
 		$sql = "SELECT COUNT(*) FROM `dinfo`";
 		$dbconn = getDBConn();
 		$numEntries = $dbconn->exec($sql);
-		$numPages = (int)$numEntries/10;
+		$numPages = (int)$numEntries/$NUMPERPAGE;
 		if($pageToGet < $numPages && $pageToGet == 0){
 			$sql2 = "SELECT `dname` FROM `dinfo`";
-			$drinkInfo = $dbconn->exec($sql2)->fetchAll(PDO::FETCH_ASSOC);
-			$finalSlice = array_slice($drinkInfo,$pageToGet*10,($pageToGet*10)+10);
+			$drinkInfo = $dbconn->exec($sql2);
+			$drinkInfo = $drinkInfo->fetchAll(PDO::FETCH_ASSOC);
+			$finalSlice = array_slice($drinkInfo,$pageToGet*$NUMPERPAGE,($pageToGet*$NUMPERPAGE)+$NUMPERPAGE);
 			echo json_encode($finalSlice);
 		}
 	}
