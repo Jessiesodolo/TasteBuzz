@@ -189,13 +189,13 @@
 	
 	function getPage(){
 		$pageToGet = (int)$_POST["pageNumber"];
-		$NUMPERPAGE = 5;
+		$NUMPERPAGE = 10;
 		$pageToGet--;
 		$sql = "SELECT * FROM `dinfo`";
 		$dbconn = getDBConn();
 		$numEntries = $dbconn->query($sql)->rowCount();
 		$numPages = (int)$numEntries/$NUMPERPAGE;
-		if($pageToGet < $numPages && $pageToGet == 0){
+		if($pageToGet < $numPages && $pageToGet >= 0){
 			$sql2 = "SELECT `dname` FROM `dinfo`";
 			$drinkInfo = $dbconn->query($sql2);
 			$drinkInfo = $drinkInfo->fetchAll(PDO::FETCH_ASSOC);

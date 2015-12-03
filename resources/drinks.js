@@ -20,6 +20,7 @@ $(document).ready(function(){
 	if(!params["pageNumber"]){
 		params["pageNumber"] = 1;
 	}
+	console.log(params['pageNumber']);
 
 	//console.log(params["type"]);
 	if(params["type"] == 'best'){
@@ -96,7 +97,7 @@ $(document).ready(function(){
 			var temp = JSON.parse(data);
 			var count = 0;
 			for(x in temp){
-				var name = temp[x][0]
+				var name = temp[x].dname;
 				console.log(name);
 				(function(x){
 				$.ajax({
