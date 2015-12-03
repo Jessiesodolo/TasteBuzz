@@ -197,7 +197,7 @@
 		$numPages = (int)$numEntries/$NUMPERPAGE;
 		if($pageToGet < $numPages && $pageToGet >= 0){
 			$startIndex = $pageToGet*$NUMPERPAGE;
-			$sql2 = "SELECT `dname` FROM `dinfo` OFFSET :start LIMIT :numPerPage";
+			$sql2 = "SELECT `dname` FROM `dinfo` LIMIT :numPerPage OFFSET :start";
 			$drinkInfo = $dbconn->prepare($sql2);
 			$drinkInfo->bindParam(":start",$startIndex);
 			$drinkInfo->bindParam(":numPerPage",$NUMPERPAGE);
