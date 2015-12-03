@@ -90,7 +90,7 @@ $(document).ready(function(){
 		$.ajax({
 			url: 'query.php',
 			method: 'POST',
-			data: {action : 'getAllDrinks', page: params['pageNumber']}
+			data: {action : 'getPage', pageNumber: params['pageNumber']}
 		}).done(function(data){
 			console.log(data);
 			var temp = JSON.parse(data);
