@@ -73,15 +73,11 @@
 	function getBestDrink(){
 		$dbconn = getDBConn();
 		$userID = $_SESSION['uid'];
-		$userPreferences = $dbconn->query("SELECT * FROM `userprefs` WHERE id = ".$userID)->fetchAll();
-		$bestSimilarity = -1;
-		$bestDrink = null;
-		$bestDrinkTraits = array();
-		$bestDrinkDesc = "";
-		$bestDrinkUrl = "";
+		$userPreferences = $dbconn->query("SELECT * FROM `userprefs` WHERE `id` = ".$userID)->fetchAll();
+		$simArray = array();
 		foreach($dbconn->query("SELECT * FROM `dinfo`") as $drinkNameRow){
 			$drinkID = $drinkNameRow["id"];
-			$drinkTraits = $dbconn->query("SELECT * FROM `dtraits` WHERE `id` = ".$drinkID)->fetchAll();
+			$drinkTraits = $dbconn->query("SELECT * FROM `dtraits` WHERE id = ".$drinkID)->fetchAll();
 			//Array of format [[id,trait][id,trait]]
 			$currentSimilarity = 0;
 			foreach($userPreferences as $userP){
@@ -91,18 +87,11 @@
 					}
 				}
 			}
-			if($currentSimilarity > $bestSimilarity){
-				$currentSimilarity = $bestSimilarity;
-				$bestDrink = $drinkNameRow["dname"];
-				$bestDrinkDesc = $drinkNameRow["description"];
-				$bestDrinkUrl = $drinkNameRow["img_addr"];
-				$bestDrinkTraits = array();
-				foreach($drinkTraits as $drinkP){
-					array_push($bestDrinkTraits,$drinkP["trait"]);
-				}
-			}
+			array_push($simArray,array($currentSimilarity,$drinkNameRow["dname"],$drinkNameRow["img_addr"],$drinkTraits,$drinkNameRow["description"]));
 		}
-		echo "{\"dname\" : \"".$bestDrink."\", \"drink_traits\" : ".json_encode($bestDrinkTraits).", \"description\" : \"".$bestDrinkDesc."\", \"img_addr\" : \"".$bestDrinkUrl."\"}";
+		usort($simArray,"sortComparator");
+		$bestDrink = $simArray[0];
+		echo "{\"dname\" : \"".$bestDrink[1]."\", \"drink_traits\" : ".json_encode($bestDrink[3]).", \"description\" : \"".$bestDrink[4]."\", \"img_addr\" : \"".$bestDrink[2]."\"}";
 	}
 	
 	function getDrinkInfo(){
