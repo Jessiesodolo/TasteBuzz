@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="resources/bootstrap-3.3.5-dist/css/styles.css" />
   </head>
   <body>
+
     <?php include 'header.php' ?>
+
     <div class="nav-padding container center-block admin-page">
       <h3>All Drinks</h1>
       <div class="terms drink">
@@ -131,6 +133,8 @@
     
     <?php include 'footer.php' ?>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="resources/admin.js"></script>
+  <!--<script src="resources/scripts.js"></script>-->
   </body>
 </html>
