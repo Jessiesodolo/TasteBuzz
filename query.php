@@ -189,7 +189,7 @@
 	
 	function getPage(){
 		$NUMPERPAGE = 10;
-		$pageToGet = $_POST["pageNumber"];
+		$pageToGet = intval($_POST["pageNumber"]);
 		$pageToGet--;
 		$sql = "SELECT * FROM `dinfo`";
 		$dbconn = getDBConn();
