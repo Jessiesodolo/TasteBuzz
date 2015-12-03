@@ -34,7 +34,7 @@ $(document).ready(function(){
 			var temp = JSON.parse(data);
 			console.log(temp);
 			var count = 1;
-			$.ajax({
+			/*$.ajax({
 				method: 'POST',
 				data: {action: 'getBestDrink'},
 				url: 'query.php',
@@ -48,7 +48,19 @@ $(document).ready(function(){
 				' class="media-body"><h2 class="media-title"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>' + bestDrink.dname + ' |<small>Best Match!</small> </h2><p>' + bestDrink.description + '</p></div></div>');
 			}).fail(function(jqXHR, status){
 				console.log('error: ' + status);
+			});*/
+			$.ajax({
+				method: 'POST',
+				data: {action: 'getDrinkInfo', drinkName: temp[0][1]},
+				url: 'query.php'
+			}).done(function(data){
+				var bestDrink = JSON.parse(data);
+				console.log(bestDrink);
+				$('#best-drink').append('<div class="media"><div class="media-left">' + 
+					'<img class="media-object" id="drink-image" src="' + bestDrink.img_addr + '"></div><div'+
+					' class="media-body"><h2 class="media-title"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>' + bestDrink.dname + ' |<small>Best Match!</small> </h2><p>' + bestDrink.description + '</p></div></div>');
 			});
+
 			for(var x = 1; x < temp.length; x++){
 				var name = temp[x][1]
 				console.log(name);

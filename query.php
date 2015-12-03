@@ -91,7 +91,7 @@
 		}
 		usort($simArray,"sortComparator");
 		$bestDrink = $simArray[0];
-		echo "{\"dname\" : \"".$bestDrink[1]."\", \"drink_traits\" : \"".json_encode($bestDrink[3])."\", \"description\" : \"".$bestDrink[4]."\", \"img_addr\" : \"".$bestDrink[2]."\"}";
+		echo "{\"dname\" : \"".$bestDrink[1]."\", \"drink_traits\" : ".json_encode($bestDrink[3]).", \"description\" : \"".$bestDrink[4]."\", \"img_addr\" : \"".$bestDrink[2]."\"}";
 	}
 	
 	function getDrinkInfo(){
