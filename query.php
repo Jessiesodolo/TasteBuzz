@@ -180,6 +180,28 @@
 		echo json_encode($stmt->fetchAll());
 	}
 	
+	function getNumPages(){
+		$sql = "SELECT COUNT(*) FROM `dinfo`";
+		$dbconn = getDBConn();
+		$res = $dbconn->exec($sql);
+		$numEntries = $res->rowCount();
+		echo intdiv($numEntries,10);;
+	}
+	
+	function getPage(){
+		$pageToGet = $_POST["pageNumber"];
+		$sql = "SELECT COUNT(*) FROM `dinfo`";
+		$dbconn = getDBConn();
+		$res = $dbconn->exec($sql);
+		$numEntries = $res->rowCount();
+		$numPages = intdiv($numEntries,10);
+		if(page <= $numPages && numPages > 0){
+			$sql2 = "SELECT * FROM `dinfo`";
+			$drinkInfo = $dbconn->exec($sql2)->fetchAll(PDO::FETCH_ASSOC);
+			$finalSlice = array_slice($drinkInfo,$pageToGet*10,($pageToGet*10)+10);
+			echo json_encode($finalSlice);
+		}
+	}
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		session_start();
@@ -219,7 +241,12 @@
 					case "doSearch":
 						doSearch();
 						break;
-
+					case "getNumPages":
+						getNumPages();
+						break;
+					case "getPage":
+						getPage();
+						break;
 				}
 			}
 		}
