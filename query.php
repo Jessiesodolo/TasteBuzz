@@ -188,8 +188,8 @@
 	}
 	
 	function getPage(){
-		$pageToGet = (int)$_POST["pageNumber"];
 		$NUMPERPAGE = 10;
+		$pageToGet = intval($_POST["pageNumber"]);
 		$pageToGet--;
 		$sql = "SELECT * FROM `dinfo`";
 		$dbconn = getDBConn();
@@ -199,8 +199,8 @@
 			$startIndex = $pageToGet*$NUMPERPAGE;
 			$sql2 = "SELECT `dname` FROM `dinfo` LIMIT :numPerPage OFFSET :start";
 			$drinkInfo = $dbconn->prepare($sql2);
-			$drinkInfo->bindParam(":start",$startIndex);
 			$drinkInfo->bindParam(":numPerPage",$NUMPERPAGE);
+			$drinkInfo->bindParam(":start",$startIndex);
 			$drinkInfo->execute();
 			$drinkInfoResult = $drinkInfo->fetchAll(PDO::FETCH_ASSOC);
 			echo json_encode($drinkInfoResult);
