@@ -149,26 +149,25 @@ $(document).ready(function(){
 		}).fail(function(jqXHR, status){
 			console.log('error: ' + status);
 		});
+		if(params['pageNumber'] && params['pageNumber'] > "1"){
+			$("#drink-pagination").append('<li><a href="drinks.php?type=' + params["type"] +'&pageNumber=' + String(Number(params["pageNumber"]) - 1) + '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>')
+		}
+		else{
+			$("#drink-pagination").append('<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>')
+		}
+		for(x = 1; x <= 5; x++){
+			$("#drink-pagination").append('<li id="'+ x +'"><a href="drinks.php?type=' + params["type"] + '&pageNumber='+ x +'">' + x + '</a></li>')
+		}
+		if(params['pageNumber'] && params['pageNumber'] < "5"){
+			$('#drink-pagination').append('<li><a href="drinks.php?type=' + params["type"] +'&pageNumber=' + String(Number(params["pageNumber"]) + 1) + '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>')
+		}
+		else{
+			$("#drink-pagination").append('<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>')
+		}
+
+		$('#' + params['pageNumber']).addClass('active');
 	}
 
-	console.log(params['pageNumber']);
-	if(params['pageNumber'] && params['pageNumber'] > "1"){
-		$("#drink-pagination").append('<li><a href="drinks.php?type=' + params["type"] +'&pageNumber=' + String(Number(params["pageNumber"]) - 1) + '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>')
-	}
-	else{
-		$("#drink-pagination").append('<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>')
-	}
-	for(x = 1; x <= 5; x++){
-		$("#drink-pagination").append('<li id="'+ x +'"><a href="drinks.php?type=' + params["type"] + '&pageNumber='+ x +'">' + x + '</a></li>')
-	}
-	if(params['pageNumber'] && params['pageNumber'] < "5"){
-		$('#drink-pagination').append('<li><a href="drinks.php?type=' + params["type"] +'&pageNumber=' + String(Number(params["pageNumber"]) + 1) + '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>')
-	}
-	else{
-		$("#drink-pagination").append('<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>')
-	}
-
-	$('#' + params['pageNumber']).addClass('active');
 
 
 	/*
