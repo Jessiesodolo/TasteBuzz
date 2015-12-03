@@ -188,7 +188,7 @@
 	}
 	
 	function getPage(){
-		$pageToGet = $_POST["pageNumber"];
+		$pageToGet = (int)$_POST["pageNumber"];
 		$pageToGet--;
 		$sql = "SELECT COUNT(*) FROM `dinfo`";
 		$dbconn = getDBConn();
