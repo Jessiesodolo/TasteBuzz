@@ -67,7 +67,7 @@
 			array_push($simArray,array($currentSimilarity,$drinkNameRow["dname"],$drinkNameRow["img_addr"]));
 		}
 		usort($simArray,"sortComparator");
-		echo json_encode($simArray);
+		echo json_encode(array_slice($simArray,0,10));
 	}
 	
 	function getBestDrink(){
@@ -183,8 +183,7 @@
 	function getNumPages(){
 		$sql = "SELECT COUNT(*) FROM `dinfo`";
 		$dbconn = getDBConn();
-		$res = $dbconn->exec($sql);
-		$numEntries = $res->rowCount();
+		$numEntries = $dbconn->exec($sql);
 		echo intdiv($numEntries,10);;
 	}
 	
@@ -192,8 +191,7 @@
 		$pageToGet = $_POST["pageNumber"];
 		$sql = "SELECT COUNT(*) FROM `dinfo`";
 		$dbconn = getDBConn();
-		$res = $dbconn->exec($sql);
-		$numEntries = $res->rowCount();
+		$numEntries = $dbconn->exec($sql);
 		$numPages = intdiv($numEntries,10);
 		if(page <= $numPages && numPages > 0){
 			$sql2 = "SELECT * FROM `dinfo`";
