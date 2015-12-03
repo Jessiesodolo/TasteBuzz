@@ -184,7 +184,7 @@
 		$sql = "SELECT COUNT(*) FROM `dinfo`";
 		$dbconn = getDBConn();
 		$numEntries = $dbconn->exec($sql);
-		echo (int)$numEntries/8;
+		echo (int)$numEntries/10;
 	}
 	
 	function getPage(){
@@ -193,11 +193,11 @@
 		$sql = "SELECT COUNT(*) FROM `dinfo`";
 		$dbconn = getDBConn();
 		$numEntries = $dbconn->exec($sql);
-		$numPages = (int)$numEntries/8;
+		$numPages = (int)$numEntries/10;
 		if($pageToGet < $numPages && $pageToGet == 0){
-			$sql2 = "SELECT * FROM `dinfo`";
+			$sql2 = "SELECT `dname` FROM `dinfo`";
 			$drinkInfo = $dbconn->exec($sql2)->fetchAll(PDO::FETCH_ASSOC);
-			$finalSlice = array_slice($drinkInfo,$pageToGet*8,($pageToGet*8)+8);
+			$finalSlice = array_slice($drinkInfo,$pageToGet*10,($pageToGet*10)+10);
 			echo json_encode($finalSlice);
 		}
 	}
