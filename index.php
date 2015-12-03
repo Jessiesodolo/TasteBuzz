@@ -20,9 +20,10 @@
     <div>
         <!-- <h1 class="text-center">TasteBUZZ</h1> -->
         <img src="resources/images/Logo_.PNG" class="center-block img-responsive" alt="logo1">
+        <h3 class="text-center">Your one stop shop for quality drink suggestions!</h3>
         <?php 
             if((isset($_SESSION["login"]) && $_SESSION["login"] == false) ||  !isset($_SESSION['login'])){ 
-                echo '<h2 class="text-center lato animate slideInDown">Don\'t have an account? <a href="register.php" id"Join" style="color:white;"><b style="text-decoration: underline;">Join Now</b></a></h2>';
+                echo '<h4 class="text-center lato animate slideInDown">Don\'t have an account? <a href="register.php" id"Join" style="color:white;"><b style="text-decoration: underline;">Join Now</b></a></h4>';
             }
         ?>
         <p class="text-center">
