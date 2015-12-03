@@ -184,7 +184,7 @@
 		$sql = "SELECT COUNT(*) FROM `dinfo`";
 		$dbconn = getDBConn();
 		$numEntries = $dbconn->exec($sql);
-		echo intdiv($numEntries,10);;
+		echo (int)$numEntries/10;
 	}
 	
 	function getPage(){
@@ -192,7 +192,7 @@
 		$sql = "SELECT COUNT(*) FROM `dinfo`";
 		$dbconn = getDBConn();
 		$numEntries = $dbconn->exec($sql);
-		$numPages = intdiv($numEntries,10);
+		$numPages = (int)$numEntries/10;
 		if(page <= $numPages && numPages > 0){
 			$sql2 = "SELECT * FROM `dinfo`";
 			$drinkInfo = $dbconn->exec($sql2)->fetchAll(PDO::FETCH_ASSOC);
