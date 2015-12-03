@@ -27,7 +27,7 @@ $(document).ready(function(){
 		$.ajax({
 			url: 'query.php',
 			method: 'POST',
-			data: {action: 'getSortedDrinks', page: params["pageNumber"]}
+			data: {action: 'getSortedDrinks'}
 		}).done(function(data){
 			var temp = JSON.parse(data);
 			console.log(temp);
