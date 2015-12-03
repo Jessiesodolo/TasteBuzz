@@ -191,9 +191,9 @@
 		$pageToGet = (int)$_POST["pageNumber"];
 		$NUMPERPAGE = 5;
 		$pageToGet--;
-		$sql = "SELECT COUNT(*) FROM `dinfo`";
+		$sql = "SELECT * FROM `dinfo`";
 		$dbconn = getDBConn();
-		$numEntries = $dbconn->exec($sql);
+		$numEntries = $dbconn->exec($sql)->rowCount();
 		$numPages = (int)$numEntries/$NUMPERPAGE;
 		if($pageToGet < $numPages && $pageToGet == 0){
 			$sql2 = "SELECT `dname` FROM `dinfo`";
