@@ -193,7 +193,7 @@
 		$pageToGet--;
 		$sql = "SELECT * FROM `dinfo`";
 		$dbconn = getDBConn();
-		$numEntries = $dbconn->exec($sql)->rowCount();
+		$numEntries = $dbconn->query($sql)->rowCount();
 		$numPages = (int)$numEntries/$NUMPERPAGE;
 		if($pageToGet < $numPages && $pageToGet == 0){
 			$sql2 = "SELECT `dname` FROM `dinfo`";
