@@ -199,8 +199,8 @@
 			$startIndex = $pageToGet*$NUMPERPAGE;
 			$sql2 = "SELECT `dname` FROM `dinfo` LIMIT :numPerPage OFFSET :start";
 			$drinkInfo = $dbconn->prepare($sql2);
-			$drinkInfo->bindParam(":numPerPage",$NUMPERPAGE);
-			$drinkInfo->bindParam(":start",$startIndex);
+			$drinkInfo->bindParam(":numPerPage", $NUMPERPAGE, PDO::PARAM_INT);
+			$drinkInfo->bindParam(":start", $startIndex, PDO::PARAM_INT);
 			$drinkInfo->execute();
 			$drinkInfoResult = $drinkInfo->fetchAll(PDO::FETCH_ASSOC);
 			echo json_encode($drinkInfoResult);
