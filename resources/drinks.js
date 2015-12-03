@@ -30,6 +30,7 @@ $(document).ready(function(){
 			method: 'POST',
 			data: {action: 'getSortedDrinks'}
 		}).done(function(data){
+			console.log(data);
 			var temp = JSON.parse(data);
 			console.log(temp);
 			var count = 1;
