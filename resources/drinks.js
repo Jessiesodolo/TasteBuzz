@@ -16,13 +16,18 @@ var parseQueryString = function() {
 
 $(document).ready(function(){
 	var params = parseQueryString();
+
+	if(!params["pageNumber"]){
+		params["pageNumber"] = 1;
+	}
+
 	//console.log(params["type"]);
 	if(params["type"] == 'best'){
 		$('#drinks-header').html('<div class="page-header"><h1 style="color: white;">The Drink For You</h1></div>');
 		$.ajax({
 			url: 'query.php',
 			method: 'POST',
-			data: {action: 'getSortedDrinks'}
+			data: {action: 'getSortedDrinks', page: params["pageNumber"]}
 		}).done(function(data){
 			var temp = JSON.parse(data);
 			console.log(temp);
@@ -85,7 +90,7 @@ $(document).ready(function(){
 		$.ajax({
 			url: 'query.php',
 			method: 'POST',
-			data: {action : 'getAllDrinks'}
+			data: {action : 'getAllDrinks', page: params['pageNumber']}
 		}).done(function(data){
 			console.log(data);
 			var temp = JSON.parse(data);
@@ -132,7 +137,43 @@ $(document).ready(function(){
 		});
 	}
 
+	console.log(params['pageNumber']);
+	if(params['pageNumber'] && params['pageNumber'] > "1"){
+		$("#drink-pagination").append('<li><a href="drinks.php?type=' + params["type"] +'&pageNumber=' + String(Number(params["pageNumber"]) - 1) + '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>')
+	}
+	else{
+		$("#drink-pagination").append('<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>')
+	}
+	for(x = 1; x <= 5; x++){
+		$("#drink-pagination").append('<li id="'+ x +'"><a href="drinks.php?type=' + params["type"] + '&pageNumber='+ x +'">' + x + '</a></li>')
+	}
+	if(params['pageNumber'] && params['pageNumber'] < "5"){
+		$('#drink-pagination').append('<li><a href="drinks.php?type=' + params["type"] +'&pageNumber=' + String(Number(params["pageNumber"]) + 1) + '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>')
+	}
+	else{
+		$("#drink-pagination").append('<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>')
+	}
 
+	$('#' + params['pageNumber']).addClass('active');
+
+
+	/*
+	<li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+*/
 
 
 })

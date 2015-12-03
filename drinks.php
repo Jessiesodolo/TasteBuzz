@@ -33,6 +33,13 @@
         <div class="container" id="allDrinks">
             
         </div>
+        <div class="text-center">
+            <nav>
+              <ul class="pagination" id="drink-pagination">
+                
+              </ul>
+            </nav>
+        </div>
 
     </section>
 
