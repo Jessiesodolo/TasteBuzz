@@ -189,11 +189,12 @@
 	
 	function getPage(){
 		$pageToGet = $_POST["pageNumber"];
+		$pageToGet--;
 		$sql = "SELECT COUNT(*) FROM `dinfo`";
 		$dbconn = getDBConn();
 		$numEntries = $dbconn->exec($sql);
 		$numPages = (int)$numEntries/10;
-		if(page <= $numPages && numPages > 0){
+		if($pageToGet < $numPages && $pageToGet == 0){
 			$sql2 = "SELECT * FROM `dinfo`";
 			$drinkInfo = $dbconn->exec($sql2)->fetchAll(PDO::FETCH_ASSOC);
 			$finalSlice = array_slice($drinkInfo,$pageToGet*10,($pageToGet*10)+10);
