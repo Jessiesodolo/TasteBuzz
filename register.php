@@ -28,7 +28,7 @@
 
                 
                 <form action="login.php" method="post" id="register-form" class="col-md-6 col-md-offset-3 col-xs-12 col-xs-offset-0">
-                    <h2 class="text-center text-info"><img src="//placehold.it/110" class="img-circle"><br>Register</h2>
+                    <h2 class="text-center text-info"><!--<img src="//placehold.it/110" class="img-circle">--><br>Register</h2>
                     <h6 class="text-center">COMPLETE THESE FIELDS</h6>
                     <div class="form-group">
                         <input type="text" name="email" class="form-control input-lg" placeholder="Email" required>
