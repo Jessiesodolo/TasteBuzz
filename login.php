@@ -1,10 +1,21 @@
 <?php
 	
+	/*
+		This is a method to retrieve a PDO connection to the database specified in the config.php file
+	*/
 	function getDBConn(){
 		require '/config.php';
 		return new PDO('mysql:host=localhost;dbname='.$config["DB_NAME"],$config["DB_USERNAME"],$config["DB_PASSWORD"]);
 	}
 	
+	/*
+		This function is used when a user attempts to login.  This function assumes that a form POST request was used to access this page.
+		-It draws the user's email and password from the post body
+		-It uses prepared statements to avoid SQL injection
+		-It uses the session super global to store relevent data about the user's session
+		-It uses header redirection to redirect the user back to index.php
+		-No die() is needed after the header redirect since the script simply terminates directly afterward anyway
+	*/
 	function doLogin(){
 		$dbcon = getDBConn();
 		$stmt = $dbcon->prepare("SELECT `id`,`pword`,`fname`,`admin` from `users` WHERE `email` = :email");
@@ -16,12 +27,11 @@
 			$row = $stmt->fetch();
 			if(password_verify($_POST["password"],$row["pword"])){
 				//WE did it fam
-				$_SESSION['login'] = true;
-				$_SESSION['fname'] = $row["fname"];
-				$_SESSION['uid'] = $row["id"];
-				$_SESSION['admin'] = $row["admin"];
+				$_SESSION['login'] = true; //Set the login state to true
+				$_SESSION['fname'] = $row["fname"]; //Used to personalize various pages
+				$_SESSION['uid'] = $row["id"]; //Used in queries later to quickly retrieve user prefs
+				$_SESSION['admin'] = $row["admin"]; //A flag for whether or not the user is an admin
 				header('Location: index.php');
-				die();
 			} else {
 				//Invalid password
 				$_SESSION['login'] = false;
@@ -34,6 +44,13 @@
 		}
 	}
 	
+	/*
+		This function handles logging the user out
+		-Resets all session globals
+		-Destroys the session
+		-It uses header redirection to redirect the user back to index.php
+		-No die() is needed after the header redirect since the script simply terminates directly afterward anyway
+	*/
 	function doLogout(){
 		if(isset($_SESSION["login"])){
 			if($_SESSION["login"] == true){
@@ -45,6 +62,14 @@
 		header("Location: index.php");
 	}
 	
+	/*
+		This function is used to register a new user
+		-It expects the user's first name, last name, email, and password to be supplied in the post body
+		-It uses PHP's builtin password_hash() function to safely salt and hash the password
+		-It uses prepared statements to avoid SQL injection
+		-It uses header redirection to redirect the user back to index.php
+		-No die() is needed after the header redirect since the script simply terminates directly afterward anyway
+	*/
 	function doRegister(){
 		$dbcon = getDBConn();
 		$stmt = $dbcon->prepare("SELECT `fname` from `users` WHERE `email` = :email");
@@ -68,6 +93,10 @@
 		}
 	}
 	
+	/*
+		This is a safety check function to make sure the various POST parameters used in whichever above function
+		was requested is set.
+	*/
 	function validatePost(){
 		switch($_POST["function"]){
 			case "login":
@@ -83,6 +112,12 @@
 		}
 	}
 	
+	/*
+		Switchboard block for the login script.
+		-Checks to make sure the POST request is valid
+		-Switches to the correct function, expects the "function" flag to be set in the POST body
+		-Generally methods in this script are accessed via a form POST request
+	*/
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if(validatePost()){
 			session_start();

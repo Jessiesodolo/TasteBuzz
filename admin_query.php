@@ -1,10 +1,19 @@
 <?php
 	
+	/*
+		This is a method to retrieve a PDO connection to the database specified in the config.php file
+	*/
 	function getDBConn(){
 		require '/config.php';
 		return new PDO('mysql:host=localhost;dbname='.$config['DB_NAME'],$config['DB_USERNAME'],$config['DB_PASSWORD']);
 	}
 	
+	/*
+		This is an admin function to add a drink to the database
+		-It expects a drink name, a drink descrption, and a uri/url to a image of the drink
+		-It uses prepared statements to avoid sql injection
+		-Accessed via form POST
+	*/
 	function addDrink(){
 		$drinkName = $_POST["drinkName"];
 		$drinkDesc = $_POST["drinkDesc"];
@@ -19,6 +28,12 @@
 		header("Location: admin.php");
 	}
 	
+	/*
+		This is an admin function to add a drink trait to the database
+		-It expects a drink id and a drink trait
+		-It uses prepared statements to avoid sql injection
+		-Accessed via form POST
+	*/
 	function addDrinkTrait(){
 		$drinkTrait = $_POST["drinkTrait"];
 		$drinkID = $_POST["drinkID"];
@@ -31,6 +46,12 @@
 		header("Location: admin.php");
 	}
 	
+	/*
+		This is an admin function to remove a drink trait from the database
+		-It expects a drink trait num (the primary key in the dtraits table)
+		-It uses prepared statements to avoid sql injection
+		-Accessed via form POST
+	*/
 	function removeDrinkTrait(){
 		$drinkTraitNum = $_POST["drinkTraitNum"];
 		$dbcon = getDBConn();
@@ -41,7 +62,10 @@
 		header("Location: admin.php");
 	}
 	
-	
+	/*
+		This is an admin function to get a list of user data		
+		-Accessed via AJAX call
+	*/
 	function getUsers(){
 		$dbconn = getDBConn();
 		$sql = "SELECT * FROM `users`";
@@ -49,6 +73,11 @@
 		echo json_encode($result->fetchAll(PDO::FETCH_ASSOC));
 	}
 
+	/*
+		This is an admin function to get a list drink data		
+		-Accessed via AJAX call
+		-Avoids getting descriptions to not overflow string length
+	*/
 	function getDrinks(){
 		$dbconn = getDBConn();
 		$sql = "SELECT `id`,`dname` FROM `dinfo`";
@@ -62,6 +91,12 @@
 		echo json_encode($toRet);
 	}
 	
+	/*
+		This is an admin function to remove a user from the database, as well as their prefs
+		-It expects a user id (primary key in users table)
+		-It uses prepared statements to avoid sql injection
+		-Accessed via form POST
+	*/
 	function removeUser(){
 		$dbcon = getDBConn();
 		$stmt = $dbcon->prepare("DELETE FROM `users` WHERE  id = :id");
@@ -73,7 +108,12 @@
 		header("Location: admin.php");
 	}
 
-
+	/*
+		This is an admin function to remove a drink from the database, as well as its traits
+		-It expects a drink id (primary key in dinfo table)
+		-It uses prepared statements to avoid sql injection
+		-Accessed via form POST
+	*/
 	function removeDrink(){
 		$dbcon = getDBConn();
 		$stmt = $dbcon->prepare("DELETE FROM `dinfo` WHERE id = :id");
@@ -85,6 +125,12 @@
 		header("Location: admin.php");
 	}
 
+	/*
+		This is an admin function to make a user an admin
+		-It expects a user id (primary key in users table)
+		-It uses prepared statements to avoid sql injection
+		-Accessed via form POST
+	*/
 	function addAdmin(){
 		$dbconn = getDBConn();
 		$stmt = $dbconn->prepare("UPDATE `users` SET admin= 1 WHERE id = :id");
@@ -93,7 +139,12 @@
 		header("Location: admin.php");
 	}
 
-	
+	/*
+		Switchboard block for the admin script.
+		-Checks to make sure the user is logged in and an admin
+		-Switches to the correct function, expects the "action" flag to be set in the POST body
+		-Generally methods in this script are accessed via a form POST request, but some are built to be used via AJAX
+	*/
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		session_start();
 		if(isset($_SESSION['login']) && $_SESSION['login'] == true && $_SESSION['admin'] == 1){

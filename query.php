@@ -1,10 +1,17 @@
 <?php
 	
+	/*
+		This is a method to retrieve a PDO connection to the database specified in the config.php file
+	*/
 	function getDBConn(){
 		require '/config.php';
 		return new PDO('mysql:host=localhost;dbname='.$config['DB_NAME'],$config['DB_USERNAME'],$config['DB_PASSWORD']);
 	}
 	
+	/*
+		This function returns the name of a randomly selected drink
+		-Accessed via AJAX
+	*/
 	function getRandomDrink(){
 		$dbconn = getDBConn();
 		$id_range = $dbconn->query("SELECT COUNT(*) FROM `dinfo`")->rowCount();
@@ -13,6 +20,9 @@
 		echo "{\"drink_name\" : ".$drink["dname"]."}";
 	}
 	
+	/*
+		A custom sort comparator function to sort arrays of format [[similarity,...],[similarity,...],...]
+	*/
 	function sortComparator($a,$b){
 		$val1 = $a[0];
 		$val2 = $b[0];
@@ -22,6 +32,10 @@
 		return ($val1 < $val2) ? 1 : -1;
 	}
 	
+	/*
+		The function returns all information about a randomly selected drink in the top 20 most similar drinks
+		-Accessed via AJAX
+	*/
 	function getRandomBestDrink(){
 		$dbconn = getDBConn();
 		$userID = $_SESSION['uid'];
@@ -47,6 +61,10 @@
 		echo json_encode($randElement[0]);
 	}
 	
+	/*
+		The function returns all information about all drinks sorted by their similarity to the current user
+		-Accessed via AJAX
+	*/
 	function getSortedDrinks(){
 		$dbconn = getDBConn();
 		$userID = $_SESSION['uid'];
@@ -70,6 +88,10 @@
 		echo json_encode(array_slice($simArray,0,10));
 	}
 	
+	/*
+		The function returns all information about the best drink for the current user
+		-Accessed via AJAX
+	*/
 	function getBestDrink(){
 		$dbconn = getDBConn();
 		$userID = $_SESSION['uid'];
@@ -94,6 +116,12 @@
 		echo "{\"dname\" : \"".$bestDrink[1]."\", \"drink_traits\" : ".json_encode($bestDrink[3]).", \"description\" : \"".$bestDrink[4]."\", \"img_addr\" : \"".$bestDrink[2]."\"}";
 	}
 	
+	/*
+		The function returns all information about a given drink
+		-Accessed via AJAX
+		-Drink name passed via post body
+		-Uses prepared statements to protect against SQL injection
+	*/
 	function getDrinkInfo(){
 		$dbconn = getDBConn();
 		$drinkName = $_POST["drinkName"];
@@ -103,6 +131,12 @@
 		echo json_encode($stmt->fetch(PDO::FETCH_ASSOC));
 	}
 	
+	/*
+		The function returns all traits for a given drink
+		-Accessed via AJAX
+		-Drink name passed via post body
+		-Uses prepared statements to protect against SQL injection
+	*/
 	function getDrinkTraits(){
 		$drinkName = $_POST["drinkName"];
 		$stmt = $dbconn->prepare("SELECT `id` FROM `dinfo` WHERE `dname` = :dname");
@@ -116,6 +150,10 @@
 		echo json_encode($dArray);
 	}
 	
+	/*
+		The function returns the name and image address of all drinks
+		-Accessed via AJAX
+	*/
 	function getAllDrinks(){
 		$dbconn = getDBConn();
 		$dArray = array();
@@ -125,6 +163,12 @@
 		echo json_encode($dArray);
 	}
 	
+	/*
+		The function allows the user to add a preference
+		-Accessed via AJAX
+		-New preference passed via post body
+		-Uses prepared statements to protect against SQL injection
+	*/
 	function addPref(){
 		$userID = $_SESSION['uid'];
 		$dbconn = getDBConn();
@@ -137,6 +181,12 @@
 		echo "{success : $count}";
 	}
 	
+	/*
+		The function allows the user to remove a preference
+		-Accessed via AJAX
+		-Old preference passed via post body
+		-Uses prepared statements to protect against SQL injection
+	*/
 	function removePref(){
 		$userID = $_SESSION['uid'];
 		$dbconn = getDBConn();
@@ -149,6 +199,10 @@
 		echo "{success : $count}";
 	}
 	
+	/*
+		The function returns all current user preferences
+		-Accessed via AJAX
+	*/
 	function getPreferences(){
 		$uArray = array();
 		$dbconn = getDBConn();
@@ -159,7 +213,11 @@
 		echo json_encode($uArray);
 	}
 
-		
+	/*
+		The function allows the user to search via a keyword
+		-Accessed via AJAX
+		-Uses prepared statements to protect against SQL injection
+	*/	
 	function doSearch(){
 		$dbconn = getDBConn();
 		$searchTerm = $_POST["searchTerm"];
@@ -169,6 +227,10 @@
 		echo json_encode($stmt->fetchAll());
 	}
 	
+	/*
+		This function returns the number of pages of drinks there are based on a limit of 10 drinks per page
+		-Used for pagination
+	*/
 	function getNumPages(){
 		$sql = "SELECT COUNT(*) FROM `dinfo`";
 		$dbconn = getDBConn();
@@ -177,6 +239,10 @@
 		echo json_encode($numEntries[0][0]/10);
 	}
 	
+	/*
+		This function returns the requested page
+		-Used for pagination
+	*/
 	function getPage(){
 		$NUMPERPAGE = 10;
 		$pageToGet = intval($_POST["pageNumber"]);
@@ -197,6 +263,13 @@
 		}
 	}
 
+	/*
+		Switchboard block for the query script.
+		-Checks to make sure the user is logged in
+		-Switches to the correct function, expects the "action" flag to be set in the POST body
+		-Generally methods in this script are accessed via AJAX
+		-Some methods can be accessed without the user being logged in
+	*/
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		session_start();
 		if(isset($_SESSION["login"])){
