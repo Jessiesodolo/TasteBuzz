@@ -19,59 +19,59 @@
     
     <section class="nav-padding">
 
-    <section id="">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center">Contact Us</h1>
-                <hr>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-9">
-                <div class="row form-group">
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required="">
+        <section id="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center">Contact Us</h1>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row form-group">
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required="">
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="middleName" name="firstName" placeholder="Middle Name" required="">
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required="">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-sm-6">
+                                <input type="email" class="form-control" name="email" placeholder="Email" required="">
+                            </div>
+                            <div class="col-sm-5">
+                                <input type="email" class="form-control" name="phone" placeholder="Phone" required="">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-sm-11">
+                                <button class="btn btn-default btn-lg pull-right">Contact Us</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" id="middleName" name="firstName" placeholder="Middle Name" required="">
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required="">
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-sm-6">
-                        <input type="email" class="form-control" name="email" placeholder="Email" required="">
-                    </div>
-                    <div class="col-sm-5">
-                        <input type="email" class="form-control" name="phone" placeholder="Phone" required="">
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    <div class="col-sm-11">
-                        <button class="btn btn-default btn-lg pull-right">Contact Us</button>
+                        <div class="well well-sm pull-right">
+                            <address>
+                                  <strong>TasteBuzz</strong><br>
+                                  1999 Burdett Ave<br>
+                                  Troy, NY 12180<br>
+                                  P: (123) 456-7890
+                            </address>
+                            <address>
+                              <strong>Email Us</strong><br>
+                              <a href="mailto:#">first.last@example.com</a>
+                            </address>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="well well-sm pull-right">
-                    <address>
-                          <strong>TasteBuzz</strong><br>
-                          1999 Burdett Ave<br>
-                          Troy, NY 12180<br>
-                          P: (123) 456-7890
-                    </address>
-                    <address>
-                      <strong>Email Us</strong><br>
-                      <a href="mailto:#">first.last@example.com</a>
-                    </address>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
     </section>
 

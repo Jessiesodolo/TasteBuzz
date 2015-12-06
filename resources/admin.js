@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	
-	$.ajax({
+
+	$.ajax({//ajax request to get all drinks
 		type: "POST",
 		url: 'admin_query.php',
 		data:{action:'getDrinks'},
@@ -26,7 +27,7 @@ $(document).ready(function(){
 	});
 	
 	
-	$.ajax({
+	$.ajax({//request to get all users
 		type: "POST",
 		url: 'admin_query.php',
 		data:{action:'getUsers'},
@@ -36,7 +37,8 @@ $(document).ready(function(){
 				jObj = drinkData[i];
 				$('.terms.user').first().append("<p>" + jObj["id"]+" "+jObj["fname"] + " " + jObj["lname"]+ " " + jObj["email"] + "</p>");
 			}
-			}, error: function(msg) {
+		},
+		error: function(msg) {
 			// there was a problem
             console.log("There was a problem: " + msg.status + " " + msg.statusText);
 		}

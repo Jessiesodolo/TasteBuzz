@@ -28,10 +28,11 @@
             </div>
         </div>
         <div id="preferences" class="container">
-            
+            <!--section for all users preferences-->
         </div>
 
     </section>
+
     <?php include 'footer.php' ?>
 
 

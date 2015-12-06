@@ -172,8 +172,9 @@
 	function getNumPages(){
 		$sql = "SELECT COUNT(*) FROM `dinfo`";
 		$dbconn = getDBConn();
-		$numEntries = $dbconn->query($sql);
-		echo (int)$numEntries/10;
+		$numEntries = $dbconn->query($sql)->fetchAll();
+
+		echo json_encode($numEntries[0][0]/10);
 	}
 	
 	function getPage(){

@@ -1,5 +1,5 @@
 
-
+//function to request logout and redirect
 function logout(){
 	$.ajax({
 		url: 'login.php',

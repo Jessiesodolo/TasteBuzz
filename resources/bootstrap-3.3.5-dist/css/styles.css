@@ -192,18 +192,20 @@ footer .nav>li>a:hover {
 	color:#fff;
 }
 
+/*add spacing on top due to header*/
 .nav-padding{
   padding-top: 75px;
 }
 
+/* quick stlying for register form*/
 #register-form{
   background-color: rgba( 255, 255, 255, .6);
   padding: 2%;
   border-radius: 4px;
 }
 
+/*custom well for preferece*/
 .preference{
-  /*color: #999;*/
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 15px 10px;
@@ -214,6 +216,7 @@ footer .nav>li>a:hover {
   background-color: rgba(255,255,255,.7);
 }
 
+/*scaling for drink images*/
 .all-drink-image{
   background-size: cover;
   background-color: gray;
@@ -223,7 +226,10 @@ footer .nav>li>a:hover {
   max-height: 300px;
   max-width: 200px;
 }
+/**********************/
 
+
+/*alternating background colors*/
 #allDrinks > :nth-child(odd){
   background-color: rgba(255,255,255,.7);
 }
@@ -233,10 +239,13 @@ footer .nav>li>a:hover {
   color: white;
 }
 
+/***********************/
+
 .featurette-divider {
   margin: 80px 0; /* <hr> between each */
 }
 
+/* best drink styling*/
 #best-drink .media-title{
   color: yellow;
 }
@@ -245,15 +254,16 @@ footer .nav>li>a:hover {
   max-height: 400px;
   max-width: 300px;
 }
-
-.media{
-  padding: 10px;
-}
-
 #best-drink{
   background-color: rgba(255,255,0, .4);
   font-size: 120%;
   color: black;
+}
+/**************************/
+
+
+.media{
+  padding: 10px;
 }
 
 .admin-page{

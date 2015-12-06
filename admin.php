@@ -45,7 +45,7 @@
         </form>
       </div>
 	  
-	  <div class="container">
+	    <div class="container">
         <h3>Add Drink Trait:</h3>
         <form role="form" action="admin_query.php" method="post" id ="addDrinkTrait">
   		  <input type="hidden" id="action" name="action" value="addDrinkTrait">
@@ -63,7 +63,7 @@
         </form>
       </div>
 	  
-	  <div class="container">
+  	  <div class="container">
         <h3>Remove Drink Trait:</h3>
         <form role="form" action="admin_query.php" method="post" id ="removeDrinkTrait">
   		  <input type="hidden" id="action" name="action" value="removeDrinkTrait">
@@ -80,61 +80,55 @@
       <div class="container">
         <h3>Remove Drink:</h3>
         <form role="form" action="admin_query.php" method="post" id ="removedrink">
-
-			      <input type="hidden" id="action" name="action" value="removeDrink">
-            <div class="form-group col-sm-6">
-                 <label for="drinkID">Enter Drink ID:</label>
-                <input type="text" class="form-control" id ="drinkID" name="drinkID" placeholder="Enter drink ID"> 
-            </div>
-            <div class="form-group col-xs-12">
-              <button type="submit" id="removedrink" name="removedrink" class="btn btn-default pull-left">Remove Drink</button> 
-            </div> 
+		      <input type="hidden" id="action" name="action" value="removeDrink">
+          <div class="form-group col-sm-6">
+               <label for="drinkID">Enter Drink ID:</label>
+              <input type="text" class="form-control" id ="drinkID" name="drinkID" placeholder="Enter drink ID"> 
+          </div>
+          <div class="form-group col-xs-12">
+            <button type="submit" id="removedrink" name="removedrink" class="btn btn-default pull-left">Remove Drink</button> 
+          </div> 
         </form>
       </div>
 
 
       <!-- User form!-->
       <h3>All Users</h1>
-      <div class="terms user">
-          
+      <div class="terms user">  
       </div>
+
       <div class="container">
-      <h3>Make user an admin:</h3>
-      <form role="form" action="admin_query.php" method="post" id ="addadmin">
-		    <input type="hidden" id="action" name="action" value="addAdmin">
-        <div class="form-group col-sm-6">
-          <label for="addadmin">Enter User ID:</label>
-          <input type="text" class="form-control" rows="3" id ="addadmin" name="addadmin" placeholder="Enter User ID number to become admin" > 
-        </div>
-        <div class="form-group col-xs-12">
-          <button type="submit" id="Admin" name="Admin" class="btn btn-default pull-left">Set Admin</button>
-        </div>
-      </form>
+        <h3>Make user an admin:</h3>
+        <form role="form" action="admin_query.php" method="post" id ="addadmin">
+  		    <input type="hidden" id="action" name="action" value="addAdmin">
+          <div class="form-group col-sm-6">
+            <label for="addadmin">Enter User ID:</label>
+            <input type="text" class="form-control" rows="3" id ="addadmin" name="addadmin" placeholder="Enter User ID number to become admin" > 
+          </div>
+          <div class="form-group col-xs-12">
+            <button type="submit" id="Admin" name="Admin" class="btn btn-default pull-left">Set Admin</button>
+          </div>
+        </form>
       </div>
-      <!-- There are redundancies in the form but there had to be because of the Database structure, if the id is the primary key you can't remove it by that!-->
       
       <div class="container">
         <h3>Remove User:</h3>
         <form role="form" action="admin_query.php" method="post" id ="removeuser">
-
-			      <input type="hidden" id="action" name="action" value="removeUser">
-            <div class="form-group col-sm-6">
-                <label for="removeuser">Enter User ID:</label>
-                <input type="text" class="form-control" rows="3" id ="Userid" name="Userid" placeholder="Enter User ID to remove preferences" >            
-            </div>
-            <div class="form-group col-sm-12">
-                <button type="submit" id ="Removeuser" name="removeduser" class="btn btn-default pull-left">Remove user</button>
-            </div> 
+		      <input type="hidden" id="action" name="action" value="removeUser">
+          <div class="form-group col-sm-6">
+              <label for="removeuser">Enter User ID:</label>
+              <input type="text" class="form-control" rows="3" id ="Userid" name="Userid" placeholder="Enter User ID to remove preferences" >            
+          </div>
+          <div class="form-group col-sm-12">
+              <button type="submit" id ="Removeuser" name="removeduser" class="btn btn-default pull-left">Remove user</button>
+          </div> 
         </form>
       </div>
-
-
     </div>
     
     <?php include 'footer.php' ?>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="resources/admin.js"></script>
-  <!--<script src="resources/scripts.js"></script>-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="resources/admin.js"></script>
   </body>
 </html>

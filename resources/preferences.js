@@ -1,5 +1,7 @@
+
+
 $(document).ready(function(){
-	$.ajax({
+	$.ajax({//retrieve all preferences
 		url: 'query.php',
 		data: {action: 'getPreferences'},
 		method: 'POST'
@@ -13,9 +15,10 @@ $(document).ready(function(){
 	})
 });
 
+
 function addPreference(){
 	if($('#preferenceInput').val() != ''){
-		$.ajax({
+		$.ajax({//if successful request to add, insert it into page
 			url: 'query.php',
 			data: {action: 'addPref', newPref: $('#preferenceInput').val()},
 			method: 'POST'
@@ -27,9 +30,9 @@ function addPreference(){
 	}
 };
 
+
 function deletePreference(object){
-	console.log($(object)[0].attributes.pref.value);
-	$.ajax({
+	$.ajax({ //if successful removing after request, remove on page
 		url: 'query.php',
 		data: {action: 'removePref', delPref: $(object)[0].attributes.pref.value},
 		method: 'POST'

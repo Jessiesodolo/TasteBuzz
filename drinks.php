@@ -23,20 +23,22 @@
             <!--header page stuff-->
         </div>
         <div class="container" id="drink-search">
+            <!--search bar section-->
         </div>
         <div class="container" id="best-drink">
-            
+            <!--section for best drink-->
         </div>
         <div class="container">
+            <!--divider-->
             <hr class="featurette-divider">
         </div>
         <div class="container" id="allDrinks">
-            
+            <!--section for all drinks-->
         </div>
         <div class="text-center">
             <nav>
               <ul class="pagination" id="drink-pagination">
-                
+                <!--area for pagination-->
               </ul>
             </nav>
         </div>
