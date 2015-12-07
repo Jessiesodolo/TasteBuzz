@@ -71,6 +71,25 @@
 		-No die() is needed after the header redirect since the script simply terminates directly afterward anyway
 	*/
 	function doRegister(){
+		if(!filter_var($_POST["email"],FILTER_VALIDATE_EMAIL)){
+			$_SESSION['registered'] = false;
+			$_SESSION['msgToUser'] = "Please enter a valid email!";
+			header('Location: register.php');
+			die();
+		}
+		if($_POST["password"] != $_POST["password2"]){
+			$_SESSION['registered'] = false;
+			$_SESSION['msgToUser'] = "Please make sure your passwords match!";
+			header('Location: register.php');
+			die();
+		}
+		if(strlen($_POST["password"]) < 8){
+			$_SESSION['registered'] = false;
+			$_SESSION['msgToUser'] = "Make sure your password is at least 8 characters";
+			header('Location: register.php');
+			die();
+		}
+		
 		$dbcon = getDBConn();
 		$stmt = $dbcon->prepare("SELECT `fname` from `users` WHERE `email` = :email");
 		$stmt->bindParam(':email', $_POST["email"]);

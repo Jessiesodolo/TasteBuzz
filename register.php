@@ -27,6 +27,11 @@
                         <br>Register
                     </h2>
                     <h6 class="text-center">COMPLETE THESE FIELDS</h6>
+					<?php 
+						if(isset($_SESSION["msgToUser"])){
+							echo ' <h6 class="text-center">'.$_SESSION["msgToUser"].'</h6>';
+						}
+					?>
                     <div class="form-group">
                         <input type="text" name="email" class="form-control input-lg" placeholder="Email" required>
                     </div>
