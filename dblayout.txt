@@ -3,39 +3,43 @@ Database Layout:
 -----------------------------------------------------------------------
 
 Users table:
-idnum, first name, last name, email address, password hash
+id, fname, lname, email, pword, admin
 
-idnum - int auto inc 
-fname - varchar 255
-lname - varchar 255
-email - varchar 255
-passwordhash varchar 255
-admin - boolean
+id - int(10) - auto incrementing primary key
+fname - varchar(255) - the users first name
+lname - varchar(255) - the users last name
+email - varchar(255) - the users email
+pword varchar(255) - The users hashed and salted password
+admin - tinyint(1) - Whether or not the user is a admin
 
 -----------------------------------------------------------------------
 
 Preferences table:
-idnum, preference
+prefnum, id, pref
 
-idnum - int - foreign key to users table idnum
-preference - varchar 255
+prefnum - int(10) - auto incrementing primary key
+id - int(11) - foreign key to users table id
+pref - varchar(255) - the actual preference
 
 NOTE: Each preference is put into the database as a single string to allow for fast comparison lookups
 
 -----------------------------------------------------------------------
 
-Drinks table:
-idnum, drink name
+Drinks table (dinfo):
+id,dname,description,img_addr
 
-idnum - int auto inc - foreign key to drinks table
-drink name - varchar 255
+id - int(11) - auto incrementing primary key
+dname - varchar(255) - Drink name
+description - varchar(1000) - Drink description
+img_addr - varchar(255) - Drink image address
 
 -----------------------------------------------------------------------
 
-Drink trait:
-idnum, trait
+Drink traits (dtraits):
+traitnum, id, trait
 
-idnum - int - foreign key to drinks table
-trait - varchar 255
+traitnum - int(11) - auto incrementing primary key
+id - int(11) - foreign key to dinfo table
+trait - varchar 255 - the actual trait
 
 -----------------------------------------------------------------------
