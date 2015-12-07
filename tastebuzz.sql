@@ -15,6 +15,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE DATABASE IF NOT EXISTS `tastebuzz`;
+USE `tastebuzz`;
 
 -- --------------------------------------------------------
 
