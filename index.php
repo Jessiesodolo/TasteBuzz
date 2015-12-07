@@ -57,7 +57,7 @@
                                 <div class="panel-heading">
                                     <h3>Simple</h3></div>
                                 <div class="panel-body">
-                                    <p>We'll ask about your drink preferences and then suggest drinks you might like!</p>
+                                    <p>Choose your drink preferences. Get suggestions.</p>
                                     <hr>FIND
                                     <hr>
                                 </div>
@@ -72,7 +72,7 @@
                                 <div class="panel-heading">
                                     <h3>Customized</h3></div>
                                 <div class="panel-body">
-                                    <p>You can change your preferences to find what your drinks oh choice are</p>
+                                    <p>Want a strong drink? We've got you covered. Want something less intense? We've got that, too. Your choice, your taste.</p>
                                     <hr>YOUR
                                     <hr>
                                 </div>
@@ -87,7 +87,7 @@
                                 <div class="panel-heading">
                                     <h3>Instant</h3></div>
                                 <div class="panel-body">
-                                    <p>Preferences are searched via database and matches are displayed to you!</p>
+                                    <p>Preferences are searched via database and matches are displayed to you based on our quick and accurate algorithms!</p>
                                     <hr>BUZZ
                                     <hr>
                                 </div>
@@ -180,15 +180,15 @@
     </section>
 
     <section class="container-fluid" id="section3">
-       <h1 class="text-center">Discover your BUZZ</h1>
+       <h1 class="text-center">Discover your Buzz</h1>
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
                 <h3 class="text-center lato slideInUp animate">Finding the <strong>TASTE</strong> that suits you.</h3>
                 <br>
                 <div class="row">
-                    <div class="col-xs-5 col-xs-offset-1"><p>TASTEBUZZ is intended to help newcomers to the drinking world discover which drinks fit their needs.</p></div>
+                    <div class="col-xs-5 col-xs-offset-1"><p>TasteBuzz is intended to help newcomers to the drinking world discover which drinks fit their needs.</p></div>
                     <div class="col-xs-2"></div>
-                    <div class="col-xs-5 "><p>The data behind our suggestions is from experience, personal testimonies and product research.</p></div>
+                    <div class="col-xs-5 "><p>The data behind our suggestions is from experience, personal testimonies, and product research.</p></div>
                 </div>
                 <br>
                 <p class="text-center">
