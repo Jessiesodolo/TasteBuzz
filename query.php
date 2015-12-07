@@ -221,10 +221,10 @@
 	function doSearch(){
 		$dbconn = getDBConn();
 		$searchTerm = $_POST["searchTerm"];
-		$stmt = $dbconn->prepare("SELECT * FROM `dinfo` INNER JOIN `dtraits` ON dtraits.id = dinfo.id AND dtraits.trait = :trait");
+		$stmt = $dbconn->prepare("SELECT `dname` FROM `dinfo` INNER JOIN `dtraits` ON dtraits.id = dinfo.id AND dtraits.trait LIKE :trait LIMIT 10");
 		$stmt->bindParam(":trait",$searchTerm);
 		$stmt->execute();
-		echo json_encode($stmt->fetchAll());
+		echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
 	}
 	
 	/*

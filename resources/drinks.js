@@ -83,8 +83,57 @@ $(document).ready(function(){
 	}
 	else if (params['type'] == 'all'){//if requesting all drinks
 		$('#drinks-header').html('<div class="page-header"><h1 style="color: white">All Drinks</h1></div>');
-		$('#drink-search').html('<div class="row" style="margin-bottom: 15px;"><div class="col-lg-6 col-lg-offset-3"><div class="input-group"><input type="text" class="form-control" placeholder="Search By Traits"><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span></div><!-- /input-group --></div><!-- /.col-lg-6 --></div>');
+		$('#drink-search').html('<div class="row" style="margin-bottom: 15px;"><div class="col-lg-6 col-lg-offset-3"><div class="input-group"><input id="search_box" type="text" class="form-control" placeholder="Search By Traits"><span class="input-group-btn"><button class="btn btn-default" type="button" id="go_search">Go!</button></span></div><!-- /input-group --></div><!-- /.col-lg-6 --></div>');
 		$('.featurette-divider').hide();
+		$('#go_search').click(function(){ //Handle searching
+			var content = $("#search_box").val();
+			if(content != ""){ 
+				$.ajax({
+					url: 'query.php',
+					method: 'POST',
+					data: {action : 'doSearch', searchTerm: content}
+				}).done(function(data){
+					$("#allDrinks").html("");
+					$("#drink-pagination").html("");
+					var temp = JSON.parse(data);
+					var count = 0;
+
+					for(x in temp){//iterate over drink names
+						var name = temp[x].dname;
+						console.log(name);
+
+						(function(x){//function allows x to be correct value within ajax call due to asynchronous issues and keep everything ordered as necessary
+							$.ajax({ //request to retrieve a drinks information based upon drink name
+								method: 'POST',
+								data: {action: 'getDrinkInfo', drinkName: name},
+								url: 'query.php'
+							}).done(function(data){
+								
+								var drink = JSON.parse(data);
+								//if statement is to alternate left and right justified images
+								if(count%2 == 0){ //even number
+									count++;
+									
+									$('#allDrinks').append('<div class="media"><div class="media-left">' + 
+									'<img class="media-object" id="drink-image" src="' + drink.img_addr + '"></div><div'+
+									' class="media-body"><h2 class="media-title">' + drink.dname + '</h2><p>' + drink.description + '</p></div></div>')
+								}
+								else{ //odd number
+									count++;
+									
+									$('#allDrinks').append('<div class="media"><div class="media-body"><h2 class="media-title">' + 
+										drink.dname + '</h2><p>' + drink.description + '</p></div><div class="media-right">' + 
+									'<img class="media-object" id="drink-image" src="' + drink.img_addr + '"></div></div>')
+								}
+
+							}).fail(function(jqXHR, status){
+								console.log('error: ' + status);
+							});
+						})(x);
+					}
+				});
+			}
+		});
 		$.ajax({ //request for drinks based upon page number
 			url: 'query.php',
 			method: 'POST',
