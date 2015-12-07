@@ -50,9 +50,7 @@ $(document).ready(function(){
 
 			//iterate over list of ordered drinks
 			for(var x = 1; x < temp.length; x++){
-				var name = temp[x][1]
-				
-
+				var name = temp[x][1];
 				(function(x){//function allows x to be correct value within ajax call due to asynchronous issues and keep everything ordered as necessary
 					$.ajax({//ajax request for a drinks information based upon drink name
 						method: 'POST',
