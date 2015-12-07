@@ -4,10 +4,10 @@
             <div class="col-xs-6 col-sm-6 col-md-3 column">
                 <h4>Information</h4>
                 <ul class="nav">
-                    <li><a href="about-us.html">Products</a></li>
-                    <li><a href="about-us.html">Services</a></li>
-                    <li><a href="about-us.html">Benefits</a></li>
-                    <li><a href="elements.html">Developers</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Benefits</a></li>
+                    <li><a href="#">Developers</a></li>
                 </ul>
             </div>
             <div class="col-xs-6 col-md-3 column">
